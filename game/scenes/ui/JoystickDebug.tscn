@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6pmtx61qbv1v"]
+
+[ext_resource type="Script" path="res://scenes/ui/JoystickDebug.gd" id="1_3pge8"]
+
+[sub_resource type="Gradient" id="Gradient_6nx7m"]
+offsets = PackedFloat32Array(0.316129, 0.367742)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_iq5do"]
+gradient = SubResource("Gradient_6nx7m")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="JoystickDebug" type="Node2D"]
+script = ExtResource("1_3pge8")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/MarginContainer"]
+layout_mode = 2
+texture = SubResource("GradientTexture2D_iq5do")
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/GridContainer"]
+layout_mode = 2
+text = "A"
+
+[node name="Label2" type="Label" parent="HBoxContainer/GridContainer"]
+layout_mode = 2
+text = "B"
+
+[node name="Label3" type="Label" parent="HBoxContainer/GridContainer"]
+layout_mode = 2
+text = "X"
+
+[node name="Label4" type="Label" parent="HBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Y"
