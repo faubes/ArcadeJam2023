@@ -9,13 +9,23 @@ var b_button_action := "b_button_%d"
 var x_button_action := "x_button_%d"
 var y_button_action := "y_button_%d"
 
+var deviceMap : Dictionary
+
 # Called when the node enters the scene tree for the first time.
 func _init():
 	joypadDeviceIds = Input.get_connected_joypads()
 	print("Detected Joypads: %s" % str(joypadDeviceIds))
+	# my controller is detected twice, so checking GUIDs to prevents duplicates
 	for joypadDeviceId in joypadDeviceIds:
-		print("Joy Device GUID: {guid}, Name: {name}".format({"guid" : Input.get_joy_guid(joypadDeviceId), "name" : Input.get_joy_name(joypadDeviceId)}))
-		create_input_map(joypadDeviceId)
+		var guid := Input.get_joy_guid(joypadDeviceId)
+		var joy_name := Input.get_joy_name(joypadDeviceId)
+		print("Joy Device GUID: {guid}, Name: {name}".format({"guid" : guid, "name" : joy_name}))
+		if not deviceMap.has(guid):
+			deviceMap[guid] = joypadDeviceId
+			create_input_map(joypadDeviceId)
+		else:
+			joypadDeviceIds.remove_at(joypadDeviceIds.find(joypadDeviceId))
+			
 	print(InputMap.get_actions())
 	Input.joy_connection_changed.connect(_joy_connection_changed)
 
