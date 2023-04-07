@@ -14,6 +14,7 @@ func _init():
 	joypadDeviceIds = Input.get_connected_joypads()
 	print("Detected Joypads: %s" % str(joypadDeviceIds))
 	for joypadDeviceId in joypadDeviceIds:
+		print("Joy Device GUID: {guid}, Name: {name}".format({"guid" : Input.get_joy_guid(joypadDeviceId), "name" : Input.get_joy_name(joypadDeviceId)}))
 		create_input_map(joypadDeviceId)
 	print(InputMap.get_actions())
 	Input.joy_connection_changed.connect(_joy_connection_changed)
@@ -75,7 +76,7 @@ func remove_input_map(id : int):
 		InputMap.erase_action(vertical_axis_action % id)
 	
 	if InputMap.has_action(a_button_action % id):
-		InputMap.erase_action(a_button_action)
+		InputMap.erase_action(a_button_action % id)
 	
 	if InputMap.has_action(b_button_action % id):
 		InputMap.erase_action(b_button_action % id)
