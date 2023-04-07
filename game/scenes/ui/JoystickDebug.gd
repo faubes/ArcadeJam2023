@@ -1,13 +1,13 @@
-extends Control
+extends HBoxContainer
 
 @export var log_unhandled_inputs = false
 @export var device_id : int
 
-@onready var texture_rect = $HBoxContainer/MarginContainer/TextureRect
-@onready var label_a = $HBoxContainer/GridContainer/LabelA
-@onready var label_b = $HBoxContainer/GridContainer/LabelB
-@onready var label_x = $HBoxContainer/GridContainer/LabelX
-@onready var label_y = $HBoxContainer/GridContainer/LabelY
+@onready var texture_rect = $MarginContainer/TextureRect
+@onready var label_a = $MarginContainer2/GridContainer/LabelA
+@onready var label_b = $MarginContainer2/GridContainer/LabelB
+@onready var label_x = $MarginContainer2/GridContainer/LabelX
+@onready var label_y = $MarginContainer2/GridContainer/LabelY
 
 
 var input : Vector2

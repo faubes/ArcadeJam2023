@@ -1,6 +1,7 @@
 extends Node
 
 var joypadDeviceIds : Array[int]
+var deviceMap : Dictionary
 
 var horizontal_axis_action := "horizontal_axis_%d"
 var vertical_axis_action := "vertical_axis_%d"
@@ -9,7 +10,6 @@ var b_button_action := "b_button_%d"
 var x_button_action := "x_button_%d"
 var y_button_action := "y_button_%d"
 
-var deviceMap : Dictionary
 
 # Called when the node enters the scene tree for the first time.
 func _init():
@@ -43,6 +43,7 @@ func _joy_connection_changed(device : int, connected : bool):
 		return
 	
 
+# define input actions for each device
 func create_input_map(id : int):
 	print("Creating device mapping for id %d" % id) 
 	if not InputMap.has_action(horizontal_axis_action % id):	

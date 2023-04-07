@@ -4,49 +4,55 @@
 
 [node name="MultiControllers" type="Node2D"]
 
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2(572, 299)
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = 6.0
+offset_right = 998.0
+offset_bottom = 506.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.15223, 1.28279)
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="JoystickDebug" parent="Node2D" instance=ExtResource("1_3wdwb")]
-offset_left = -570.0
-offset_top = -299.0
-offset_right = -530.0
-offset_bottom = -259.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
+[node name="JoystickDebug" parent="Control" instance=ExtResource("1_3wdwb")]
+layout_mode = 1
 
-[node name="JoystickDebug2" parent="Node2D" instance=ExtResource("1_3wdwb")]
+[node name="JoystickDebug2" parent="Control" instance=ExtResource("1_3wdwb")]
+layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = -571.0
-offset_top = 282.0
-offset_right = -531.0
-offset_bottom = 322.0
+offset_top = -40.0
+offset_bottom = 0.0
 grow_vertical = 0
 device_id = 1
 
-[node name="JoystickDebug3" parent="Node2D" instance=ExtResource("1_3wdwb")]
+[node name="JoystickDebug3" parent="Control" instance=ExtResource("1_3wdwb")]
+layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 459.0
-offset_top = -294.0
-offset_right = 499.0
-offset_bottom = -254.0
+offset_left = -40.0
+offset_right = 0.0
 grow_horizontal = 0
 device_id = 2
 
-[node name="JoystickDebug4" parent="Node2D" instance=ExtResource("1_3wdwb")]
+[node name="JoystickDebug4" parent="Control" instance=ExtResource("1_3wdwb")]
+layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 471.0
-offset_top = 282.0
-offset_right = 511.0
-offset_bottom = 322.0
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 0.0
+offset_bottom = 0.0
 grow_horizontal = 0
 grow_vertical = 0
 device_id = 3
