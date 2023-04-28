@@ -24,12 +24,12 @@ func _process(_delta):
 		#example multi-controller input using action mappings (polling)
 		if Input.is_action_pressed(ArcadeInputMap.a_button_action % device_id):
 			label_a.add_theme_color_override("font_color", Color.RED)
-		else:
+		if Input.is_action_just_released(ArcadeInputMap.a_button_action % device_id):
 			label_a.remove_theme_color_override("font_color")
 		
 		if Input.is_action_pressed(ArcadeInputMap.b_button_action % device_id):
 			label_b.add_theme_color_override("font_color", Color.RED)
-		else:
+		if Input.is_action_just_released(ArcadeInputMap.b_button_action % device_id):
 			label_b.remove_theme_color_override("font_color")
 		
 	
@@ -45,7 +45,7 @@ func _unhandled_input(event):
 	if joypad_event:
 		if joypad_event.axis == 0:
 			input.x = joypad_event.axis_value
-		elif joypad_event.axis == 1:
+		if joypad_event.axis == 1:
 			input.y = joypad_event.axis_value
 
 	var joypad_button_event = event as InputEventJoypadButton

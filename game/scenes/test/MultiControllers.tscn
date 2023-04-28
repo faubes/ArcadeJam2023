@@ -19,10 +19,7 @@ scale = Vector2(1.15223, 1.28279)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="JoystickDebug" parent="Control" instance=ExtResource("1_3wdwb")]
-layout_mode = 1
-
-[node name="JoystickDebug2" parent="Control" instance=ExtResource("1_3wdwb")]
+[node name="JoystickDebug0" parent="Control" instance=ExtResource("1_3wdwb")]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -30,19 +27,8 @@ anchor_bottom = 1.0
 offset_top = -40.0
 offset_bottom = 0.0
 grow_vertical = 0
-device_id = 1
 
-[node name="JoystickDebug3" parent="Control" instance=ExtResource("1_3wdwb")]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -40.0
-offset_right = 0.0
-grow_horizontal = 0
-device_id = 2
-
-[node name="JoystickDebug4" parent="Control" instance=ExtResource("1_3wdwb")]
+[node name="JoystickDebug1" parent="Control" instance=ExtResource("1_3wdwb")]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -55,4 +41,18 @@ offset_right = 0.0
 offset_bottom = 0.0
 grow_horizontal = 0
 grow_vertical = 0
-device_id = 3
+device_id = 1
+
+[node name="JoystickDebug2" parent="Control" instance=ExtResource("1_3wdwb")]
+layout_mode = 1
+device_id = 2
+
+[node name="JoystickDebug3" parent="Control" instance=ExtResource("1_3wdwb")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_right = 0.0
+grow_horizontal = 0
+device_id = 2
