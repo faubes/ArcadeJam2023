@@ -9,7 +9,7 @@ var a_button_action := "a_button_%d"
 var b_button_action := "b_button_%d"
 var x_button_action := "x_button_%d"
 var y_button_action := "y_button_%d"
-
+var actions = [horizontal_axis_action, vertical_axis_action, a_button_action, b_button_action, x_button_action, y_button_action]
 
 # Called when the node enters the scene tree for the first time.
 func _init():
@@ -20,12 +20,7 @@ func _init():
 		var guid := Input.get_joy_guid(joypadDeviceId)
 		var joy_name := Input.get_joy_name(joypadDeviceId)
 		print("Joy Device GUID: {guid}, Name: {name}".format({"guid" : guid, "name" : joy_name}))
-		if not deviceMap.has(guid):
-			deviceMap[guid] = joypadDeviceId
-			create_input_map(joypadDeviceId)
-		else:
-			joypadDeviceIds.remove_at(joypadDeviceIds.find(joypadDeviceId))
-			
+		create_input_map(joypadDeviceId)
 	print(InputMap.get_actions())
 	Input.joy_connection_changed.connect(_joy_connection_changed)
 
@@ -45,13 +40,14 @@ func _joy_connection_changed(device : int, connected : bool):
 
 # define input actions for each device
 func create_input_map(id : int):
+	for action in actions:
+		if InputMap.has_action(action % id):
+			print("Failed to create input map for device %d: action already exists" % id)
+			return
+
 	print("Creating device mapping for id %d" % id) 
-	if not InputMap.has_action(horizontal_axis_action % id):	
-		InputMap.add_action(horizontal_axis_action % id)
-		InputMap.action_add_event(horizontal_axis_action % id, InputEventJoypadMotion.new())
-	else:
-		print("Failed to create input map for device %d: action already exists" % id)
-		return
+	InputMap.add_action(horizontal_axis_action % id)
+	InputMap.action_add_event(horizontal_axis_action % id, InputEventJoypadMotion.new())
 	
 	InputMap.add_action(vertical_axis_action % id)
 	var vertical_axis_joypad_motion = InputEventJoypadMotion.new()
