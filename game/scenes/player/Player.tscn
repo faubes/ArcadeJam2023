@@ -1,3 +1,18 @@
-[gd_scene format=3 uid="uid://dte16d778t1xn"]
+[gd_scene load_steps=4 format=3 uid="uid://dte16d778t1xn"]
 
-[node name="Player" type="Node2D"]
+[ext_resource type="Script" path="res://scenes/player/Player.gd" id="1_vwkk2"]
+[ext_resource type="PackedScene" uid="uid://dtn1p1637mkhl" path="res://scenes/player/Claw.tscn" id="2_576ku"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_arsns"]
+
+[node name="Player" type="StaticBody2D"]
+script = ExtResource("1_vwkk2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_arsns")
+
+[node name="SpringArm" type="DampedSpringJoint2D" parent="."]
+node_a = NodePath("..")
+node_b = NodePath("Claw")
+
+[node name="Claw" parent="SpringArm" instance=ExtResource("2_576ku")]
