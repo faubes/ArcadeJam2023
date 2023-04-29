@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://lp4cu1vsx6yr"]
+[gd_scene load_steps=9 format=3 uid="uid://lp4cu1vsx6yr"]
 
 [ext_resource type="Script" path="res://scenes/test/main_menu_controller.gd" id="1_2qg46"]
 [ext_resource type="Texture2D" uid="uid://3y2730jnvem6" path="res://PlaceholderBackground.png" id="2_dl4dc"]
@@ -12,6 +12,13 @@ font_size = 50
 
 [sub_resource type="LabelSettings" id="LabelSettings_yrfui"]
 font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_lox4f"]
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_4ercw"]
+font_size = 40
+font_color = Color(0.87, 0.0696, 0.0696, 1)
 
 [node name="Main Menu Button Container" type="Node2D"]
 script = ExtResource("1_2qg46")
@@ -101,4 +108,85 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "SNIPPED BY"
 label_settings = SubResource("LabelSettings_yrfui")
+horizontal_alignment = 1
+
+[node name="Player Ready Container" type="TextureRect" parent="Main Menu"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -88.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Player0" type="Label" parent="Main Menu/Player Ready Container"]
+layout_mode = 1
+offset_right = 394.0
+offset_bottom = 72.0
+text = "Player 1"
+label_settings = SubResource("LabelSettings_lox4f")
+horizontal_alignment = 1
+
+[node name="Player0 Ready" type="Label" parent="Main Menu/Player Ready Container/Player0"]
+layout_mode = 0
+offset_top = 35.0
+offset_right = 394.0
+offset_bottom = 107.0
+text = "READY!"
+label_settings = SubResource("LabelSettings_4ercw")
+horizontal_alignment = 1
+
+[node name="Player1" type="Label" parent="Main Menu/Player Ready Container"]
+layout_mode = 1
+offset_right = 894.0
+offset_bottom = 72.0
+text = "Player 2"
+label_settings = SubResource("LabelSettings_lox4f")
+horizontal_alignment = 1
+
+[node name="Player1 Ready" type="Label" parent="Main Menu/Player Ready Container/Player1"]
+layout_mode = 0
+offset_left = 250.0
+offset_top = 35.0
+offset_right = 644.0
+offset_bottom = 107.0
+text = "READY!"
+label_settings = SubResource("LabelSettings_4ercw")
+horizontal_alignment = 1
+
+[node name="Player2" type="Label" parent="Main Menu/Player Ready Container"]
+layout_mode = 1
+offset_right = 1394.0
+offset_bottom = 72.0
+text = "Player 3"
+label_settings = SubResource("LabelSettings_lox4f")
+horizontal_alignment = 1
+
+[node name="Player2 Ready" type="Label" parent="Main Menu/Player Ready Container/Player2"]
+layout_mode = 0
+offset_left = 500.0
+offset_top = 35.0
+offset_right = 894.0
+offset_bottom = 107.0
+text = "READY!"
+label_settings = SubResource("LabelSettings_4ercw")
+horizontal_alignment = 1
+
+[node name="Player3" type="Label" parent="Main Menu/Player Ready Container"]
+layout_mode = 1
+offset_right = 1894.0
+offset_bottom = 72.0
+text = "Player 4"
+label_settings = SubResource("LabelSettings_lox4f")
+horizontal_alignment = 1
+
+[node name="Player3 Ready" type="Label" parent="Main Menu/Player Ready Container/Player3"]
+layout_mode = 0
+offset_left = 750.0
+offset_top = 35.0
+offset_right = 1144.0
+offset_bottom = 107.0
+text = "READY!"
+label_settings = SubResource("LabelSettings_4ercw")
 horizontal_alignment = 1
