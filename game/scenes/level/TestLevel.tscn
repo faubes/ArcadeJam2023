@@ -4,6 +4,21 @@
 
 [node name="TestLevel" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_4iu7c")]
-position = Vector2(493, 320)
+[node name="Player0" parent="." instance=ExtResource("1_4iu7c")]
+position = Vector2(141, 520)
 rotation = -1.06122
+
+[node name="Player1" parent="." instance=ExtResource("1_4iu7c")]
+position = Vector2(996, 538)
+rotation = -1.06122
+player_id = 1
+
+[node name="Player2" parent="." instance=ExtResource("1_4iu7c")]
+position = Vector2(135, 101)
+rotation = -1.06122
+player_id = 2
+
+[node name="Player3" parent="." instance=ExtResource("1_4iu7c")]
+position = Vector2(1003, 128)
+rotation = -1.06069
+player_id = 3

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgmafhkstgr6p"]
+
+[ext_resource type="PackedScene" uid="uid://yd4wx05as6w5" path="res://scenes/pickup/PickUpBasicPoints.tscn" id="1_rt63y"]
+
+[node name="Root" instance=ExtResource("1_rt63y")]
+
+[node name="PickUp" parent="." index="0"]
+pointValue = 25
+size = 20
+mass = 2

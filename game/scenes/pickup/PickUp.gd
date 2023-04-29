@@ -1,10 +1,11 @@
 extends Node
+class_name PickUp
 
 @export_group("General")
 @export var pointValue := 0
 @export var size := 10
 @export var mass := 1
-@export var consumeBehaviour : Array[PickUpConsumeBehaviour]
+@export var consumeBehaviours : Array[PickUpBehaviour] = []
 
 @export_group("Visual Effects")
 @export_node_path("GPUParticles2D") var grabParticles = null
@@ -27,7 +28,10 @@ func _process(delta):
 
 func _on_consumed(playerObject):
 	# Implement what happens when this power up is consumed.
-	
+	for consumeBehaviour in consumeBehaviours:
+		consumeBehaviour.perform(self)
+
+	queue_free()
 	pass
 
 func initCollider():
