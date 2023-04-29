@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://lp4cu1vsx6yr"]
+[gd_scene load_steps=7 format=3 uid="uid://lp4cu1vsx6yr"]
 
 [ext_resource type="Script" path="res://scenes/test/main_menu_controller.gd" id="1_2qg46"]
-[ext_resource type="Texture2D" uid="uid://dws57npm36v7t" path="res://icon.svg" id="2_oeoru"]
+[ext_resource type="Texture2D" uid="uid://3y2730jnvem6" path="res://PlaceholderBackground.png" id="2_dl4dc"]
+[ext_resource type="Texture2D" uid="uid://cvy5hvrv0cpuc" path="res://PlaceholderButton.png" id="3_22if5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wakki"]
 font_size = 60
@@ -16,6 +17,14 @@ font_size = 40
 script = ExtResource("1_2qg46")
 
 [node name="Main Menu" type="CanvasLayer" parent="."]
+
+[node name="Background" type="TextureRect" parent="Main Menu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_dl4dc")
 
 [node name="Title" type="Label" parent="Main Menu"]
 anchors_preset = 5
@@ -43,7 +52,7 @@ offset_right = -358.5
 offset_bottom = -292.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_oeoru")
+texture = ExtResource("3_22if5")
 expand_mode = 2
 
 [node name="Play Game" type="Label" parent="Main Menu"]

@@ -9,8 +9,8 @@ enum SelectedMainMenuOption { PLAY_GAME, HIGH_SCORES, CREDITS}
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	SelectedOption = SelectedMainMenuOption.PLAY_GAME
-	SelectedButton.set_position(ButtonList[SelectedOption].position)
-	#selectedIndicator.set_position(Vector2(0, 0), false)
+	#Set initial button position.
+	NavigateMenu(true)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -35,4 +35,5 @@ func NavigateMenu(up):
 	elif (!up && SelectedOption != SelectedMainMenuOption.CREDITS):
 		SelectedOption = SelectedOption + 1
 	SelectedButton.set_position(ButtonList[SelectedOption].position)
+	SelectedButton.set_size(ButtonList[SelectedOption].size)
 	
