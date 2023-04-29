@@ -1,7 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://dtn1p1637mkhl"]
 
-[sub_resource type="Animation" id="Animation_srgim"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_q76ff"]
+resource_name = "open"
+length = 0.25
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -12,7 +14,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-36, 0)]
+"values": [Vector2(-40, 21)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -21,10 +23,10 @@ tracks/1/path = NodePath("BigClaw:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [-0.0637454]
+"values": [-0.0637454, -0.526964]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -33,10 +35,10 @@ tracks/2/path = NodePath("SmallClaw:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-47, 2)]
+"values": [Vector2(-49, 20), Vector2(-67, 15)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -45,10 +47,10 @@ tracks/3/path = NodePath("SmallClaw:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0]
+"values": [0.0, 0.23349]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -57,10 +59,10 @@ tracks/4/path = NodePath("Area2D/GrabArea:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true]
+"values": [true, false]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -84,96 +86,46 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(4, -21)]
+"values": [Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_q76ff"]
-resource_name = "open"
-length = 0.25
-loop_mode = 2
+[sub_resource type="Animation" id="Animation_srgim"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("BigClaw:position")
+tracks/0/path = NodePath("BigClaw:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-36, 0)]
+"values": [-0.526964]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("BigClaw:rotation")
+tracks/1/path = NodePath("SmallClaw:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [-0.0637454, -0.654284]
+"values": [Vector2(-67, 15)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("SmallClaw:position")
+tracks/2/path = NodePath("SmallClaw:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-47, 2), Vector2(-56, -0.999998)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("SmallClaw:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 0.310279]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Area2D/GrabArea:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("ClawCollisionShape:shape:radius")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [42.0119, 50.0]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("ClawCollisionShape:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(4, -21), Vector2(-14, -30)]
+"values": [0.23349]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gl3yl"]
@@ -189,14 +141,16 @@ radius = 32.0
 radius = 42.0119
 
 [node name="Claw" type="RigidBody2D"]
+lock_rotation = true
 
 [node name="BigClaw" type="Polygon2D" parent="."]
-position = Vector2(-36, 0)
-rotation = -0.0637454
+position = Vector2(-40, 21)
+rotation = -0.526964
 polygon = PackedVector2Array(10, -11, 2, -24, 6, -41, 15, -47, 18, -61, 26, -50, 34, -51, 43, -63, 47, -50, 57, -48, 67, -53, 66, -44, 71, -42, 77.0348, -45.1845, 76, -39, 82, -31, 82, -19, 78, -6, 69, -18, 58, -25, 39, -25, 24, -20)
 
 [node name="SmallClaw" type="Polygon2D" parent="."]
-position = Vector2(-47, 2)
+position = Vector2(-67, 15)
+rotation = 0.23349
 polygon = PackedVector2Array(17, -6, 29, -12, 35, -7, 40, -2, 49, -1, 53, -4, 50, 3, 39, 8, 27, 6)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -207,10 +161,8 @@ libraries = {
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="GrabArea" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(2, -14)
 shape = SubResource("CircleShape2D_04pnv")
 disabled = true
 
 [node name="ClawCollisionShape" type="CollisionShape2D" parent="."]
-position = Vector2(4, -21)
 shape = SubResource("CircleShape2D_hc2jl")

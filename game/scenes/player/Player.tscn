@@ -8,11 +8,18 @@
 [node name="Player" type="StaticBody2D"]
 script = ExtResource("1_vwkk2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_arsns")
-
-[node name="SpringArm" type="DampedSpringJoint2D" parent="."]
+[node name="GrooveJoint2D" type="GrooveJoint2D" parent="."]
 node_a = NodePath("..")
 node_b = NodePath("Claw")
+bias = 0.5
+length = 300.0
+initial_offset = 1.0
 
-[node name="Claw" parent="SpringArm" instance=ExtResource("2_576ku")]
+[node name="Claw" parent="GrooveJoint2D" instance=ExtResource("2_576ku")]
+
+[node name="Body" type="Polygon2D" parent="."]
+position = Vector2(0, -1)
+polygon = PackedVector2Array(-8, 8, -8, -8, 8, -8, 8, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_arsns")
