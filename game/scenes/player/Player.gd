@@ -7,7 +7,7 @@ extends StaticBody2D
 @export var speed = 500
 @export var retract_speed = 1000
 
-var player_id : int = 0
+@export var player_id : int = 0
 enum hand_state { closed, open }
 enum arm_state { retracted, extending, retracting }
 
