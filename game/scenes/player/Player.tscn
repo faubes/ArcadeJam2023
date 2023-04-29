@@ -12,7 +12,7 @@ script = ExtResource("1_vwkk2")
 node_a = NodePath("..")
 node_b = NodePath("Claw")
 bias = 0.5
-length = 300.0
+length = 500.0
 initial_offset = 1.0
 
 [node name="Claw" parent="GrooveJoint2D" instance=ExtResource("2_576ku")]

@@ -4,7 +4,6 @@ extends StaticBody2D
 @onready var claw = $GrooveJoint2D/Claw
 
 @export var min_range = 100
-@export var max_range = 200
 @export var speed = 20
 
 
@@ -17,7 +16,7 @@ var current_arm_state : arm_state = arm_state.retracted
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	claw.global_position = self.global_position + min_range * Vector2.RIGHT
 
 func set_arm_state(new_state : arm_state):
 	if current_arm_state == new_state:
@@ -29,12 +28,15 @@ func set_arm_state(new_state : arm_state):
 func _process(_delta):
 	match current_arm_state:
 		arm_state.extending:
-			if claw.global_position.distance_to(self.global_position) > max_range:
-				claw.apply_impulse(Vector2(0,-250))
+			if claw.global_position.distance_to(self.global_position) > groove_joint_2d.length * 0.9:
+				claw.linear_velocity = Vector2.ZERO
+				claw.apply_impulse(Vector2(0,-1050))
 				set_arm_state(arm_state.retracting)
 		arm_state.retracting:
 			if claw.global_position.distance_to(self.global_position) < min_range:
 				set_arm_state(arm_state.retracted)
+				claw.linear_velocity = Vector2.ZERO
+				
 	
 func _input(event):
 	if event.device != player_id:
@@ -51,5 +53,6 @@ func _input(event):
 			
 			if event.is_action_pressed("FireHand"):
 				print("retracted")
-				claw.apply_impulse(Vector2(0,150))
+				claw.linear_velocity = Vector2.ZERO
+				claw.apply_impulse(Vector2(0,550))
 				set_arm_state(arm_state.extending)
