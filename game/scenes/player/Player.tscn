@@ -16,6 +16,7 @@ length = 500.0
 initial_offset = 1.0
 
 [node name="Claw" parent="GrooveJoint2D" instance=ExtResource("2_576ku")]
+rotation = 1.85419
 
 [node name="Body" type="Polygon2D" parent="."]
 position = Vector2(0, -1)

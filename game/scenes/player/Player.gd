@@ -13,7 +13,7 @@ extends StaticBody2D
 enum hand_state { closed, open }
 enum arm_state { retracted, extending, retracting }
 
-var phase_angle : float = player_id * PI/2
+@onready var phase_angle : float = player_id * PI/2 + PI
 
 var current_hand_state : hand_state = hand_state.closed
 var current_arm_state : arm_state = arm_state.retracted
@@ -21,7 +21,9 @@ var current_arm_state : arm_state = arm_state.retracted
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	claw.global_position = self.global_position + min_range * Vector2.RIGHT
-	rotation = phase_angle
+	print("{player} {angle}".format({"player" : player_id, "angle" : phase_angle}))
+	#rotation = phase_angle
+	
 
 func set_arm_state(new_state : arm_state):
 	if current_arm_state == new_state:

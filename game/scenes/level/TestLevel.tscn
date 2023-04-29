@@ -5,17 +5,17 @@
 [node name="TestLevel" type="Node2D"]
 
 [node name="Player0" parent="." instance=ExtResource("1_4iu7c")]
-position = Vector2(556, 206)
+position = Vector2(33, 608)
 rotation = 3.14159
 
 [node name="Player1" parent="." instance=ExtResource("1_4iu7c")]
-position = Vector2(996, 538)
+position = Vector2(1084, 593)
 player_id = 1
 
 [node name="Player2" parent="." instance=ExtResource("1_4iu7c")]
-position = Vector2(135, 101)
+position = Vector2(48, 49)
 player_id = 2
 
 [node name="Player3" parent="." instance=ExtResource("1_4iu7c")]
-position = Vector2(1003, 128)
+position = Vector2(1094, 48)
 player_id = 3
