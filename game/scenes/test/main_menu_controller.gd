@@ -5,6 +5,8 @@ enum SelectedMainMenuOption { PLAY_GAME, HIGH_SCORES, CREDITS}
 @export var SelectedOption = SelectedMainMenuOption.PLAY_GAME
 @onready var SelectedButton = $"Main Menu/SelectedIndicator"
 @onready var MainMenu = $"Main Menu"
+@onready var HighScores = $"High Scores"
+@onready var Credits = $Credits
 @onready var ReadyList = [false, false, false, false]
 @onready var ReadyIndicatorList = [$"Main Menu/Player Ready Container/Player0/Player0 Ready",
 $"Main Menu/Player Ready Container/Player1/Player1 Ready",
@@ -20,18 +22,28 @@ func _process(delta):
 	pass
 
 func _input(event):
-	if !MainMenu.is_visible():
+	if !MainMenu.is_visible() && !Credits.is_visible() && !HighScores.is_visible():
 		return
 		
 	#Menu Inputs
-	if event.is_action_pressed("MenuUp"):
+	if event.is_action_pressed("MenuUp") && MainMenu.is_visible():
 		NavigateMenu(true)
-	if event.is_action_pressed("MenuDown"):
+	if event.is_action_pressed("MenuDown") && MainMenu.is_visible():
 		NavigateMenu(false)
-	if event.is_action_pressed("SelectButton") && SelectedOption == SelectedMainMenuOption.PLAY_GAME:
-		StartGame()
+	if event.is_action_pressed("SelectButton") && MainMenu.is_visible():
+		if SelectedOption == SelectedMainMenuOption.PLAY_GAME:
+			StartGame()
+		elif SelectedOption == SelectedMainMenuOption.HIGH_SCORES:
+			MainMenu.set_visible(false)
+			HighScores.set_visible(true)
+		elif SelectedOption == SelectedMainMenuOption.CREDITS:
+			MainMenu.set_visible(false)
+			Credits.set_visible(true)
 	if event.is_action_pressed("ReadyPlayer"):
-		ToggleReadyIndicator(event.device)
+		if MainMenu.is_visible():
+			ToggleReadyIndicator(event.device)
+		else:
+			ResetMenu()
 
 func NavigateMenu(up):
 	if (up && SelectedOption != SelectedMainMenuOption.PLAY_GAME):
@@ -45,6 +57,9 @@ func ResetMenu():
 	SelectedOption = SelectedMainMenuOption.PLAY_GAME
 	#Set initial button position.
 	NavigateMenu(true)
+	MainMenu.set_visible(true)
+	HighScores.set_visible(false)
+	Credits.set_visible(false)
 	# Reset ready players
 	ReadyList = [false, false, false, false]
 	ShowReadyIndicators()
