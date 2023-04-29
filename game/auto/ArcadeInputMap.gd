@@ -55,8 +55,6 @@ func create_input_map(id : int):
 	if (id == 0):
 		var horizontal_axis_motion = InputEventAction.new()
 		horizontal_axis_motion.device = id
-		horizontal_axis_motion.axis = 0
-		
 	
 	InputMap.add_action(vertical_axis_action % id)
 	var vertical_axis_joypad_motion = InputEventJoypadMotion.new()
