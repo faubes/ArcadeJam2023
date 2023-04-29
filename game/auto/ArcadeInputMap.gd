@@ -9,7 +9,8 @@ var a_button_action := "a_button_%d"
 var b_button_action := "b_button_%d"
 var x_button_action := "x_button_%d"
 var y_button_action := "y_button_%d"
-var actions = [horizontal_axis_action, vertical_axis_action, a_button_action, b_button_action, x_button_action, y_button_action]
+var start_button_action := "start_button_%d"
+var actions = [horizontal_axis_action, vertical_axis_action, a_button_action, b_button_action, x_button_action, y_button_action, start_button_action]
 
 # Called when the node enters the scene tree for the first time.
 func _init():
@@ -21,7 +22,7 @@ func _init():
 		var joy_name := Input.get_joy_name(joypadDeviceId)
 		print("Joy Device GUID: {guid}, Name: {name}".format({"guid" : guid, "name" : joy_name}))
 		create_input_map(joypadDeviceId)
-	print(InputMap.get_actions())
+	#print(InputMap.get_actions())
 	Input.joy_connection_changed.connect(_joy_connection_changed)
 
 func _joy_connection_changed(device : int, connected : bool):
@@ -36,7 +37,7 @@ func _joy_connection_changed(device : int, connected : bool):
 		joypadDeviceIds.remove_at(joypadDeviceIds.find(device))
 		remove_input_map(device)
 		return
-	
+
 
 # define input actions for each device
 func create_input_map(id : int):
@@ -51,6 +52,11 @@ func create_input_map(id : int):
 	horizontal_axis_joypad_motion.device = id
 	horizontal_axis_joypad_motion.axis = 0
 	InputMap.action_add_event(horizontal_axis_action % id, horizontal_axis_joypad_motion)
+	if (id == 0):
+		var horizontal_axis_motion = InputEventAction.new()
+		horizontal_axis_motion.device = id
+		horizontal_axis_motion.axis = 0
+		
 	
 	InputMap.add_action(vertical_axis_action % id)
 	var vertical_axis_joypad_motion = InputEventJoypadMotion.new()
@@ -81,6 +87,13 @@ func create_input_map(id : int):
 	y_button.device = id
 	y_button.button_index = JOY_BUTTON_Y
 	InputMap.action_add_event(y_button_action % id, y_button)
+
+	InputMap.add_action(start_button_action % id)
+	var start_button = InputEventJoypadButton.new()
+	start_button.device = id
+	start_button.button_index = JOY_BUTTON_START
+	InputMap.action_add_event(start_button_action % id, start_button)
+
 
 
 func remove_input_map(id : int):
