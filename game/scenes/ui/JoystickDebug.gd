@@ -32,6 +32,21 @@ func _process(_delta):
 		if Input.is_action_just_released(ArcadeInputMap.b_button_action % device_id):
 			label_b.remove_theme_color_override("font_color")
 		
+func _input(event):
+	if event.device != device_id:
+		return
+		
+		#example mapped inputs
+	if event.is_action_pressed("FireHand"):
+		label_a.add_theme_color_override("font_color", Color.RED)
+	if event.is_action_pressed("SelectButton"):
+		label_a.add_theme_color_override("font_color", Color.BLUE)
+	if event.is_action_pressed("ReelIn"):
+		label_a.add_theme_color_override("font_color", Color.DARK_GREEN)
+	if event.is_action_pressed("TiltClockwise"):
+		label_a.add_theme_color_override("font_color", Color.DARK_ORANGE)
+	if event.is_action_pressed("TiltCounterclockwise"):
+		label_a.add_theme_color_override("font_color", Color.PURPLE)
 	
 #example multi-controller input using events
 func _unhandled_input(event):
