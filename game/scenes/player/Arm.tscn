@@ -1,0 +1,221 @@
+[gd_scene load_steps=7 format=3 uid="uid://dfljcrstmyyqb"]
+
+[sub_resource type="SkeletonModification2DJiggle" id="SkeletonModification2DJiggle_ct3p0"]
+target_nodepath = NodePath("Target")
+jiggle_data_chain_length = 4
+use_colliders = true
+collision_mask = 1
+joint_data/0/bone_index = 0
+joint_data/0/bone2d_node = NodePath("Upper")
+joint_data/0/override_defaults = true
+joint_data/0/stiffness = 3.0
+joint_data/0/mass = 0.75
+joint_data/0/damping = 0.75
+joint_data/0/use_gravity = false
+joint_data/1/bone_index = 1
+joint_data/1/bone2d_node = NodePath("Upper/Lower")
+joint_data/1/override_defaults = true
+joint_data/1/stiffness = 3.0
+joint_data/1/mass = 0.75
+joint_data/1/damping = 0.75
+joint_data/1/use_gravity = false
+joint_data/2/bone_index = 2
+joint_data/2/bone2d_node = NodePath("Upper/Lower/Lower2")
+joint_data/2/override_defaults = true
+joint_data/2/stiffness = 3.0
+joint_data/2/mass = 0.75
+joint_data/2/damping = 0.75
+joint_data/2/use_gravity = false
+joint_data/3/bone_index = 3
+joint_data/3/bone2d_node = NodePath("Upper/Lower/Lower2/Lower3")
+joint_data/3/override_defaults = false
+
+[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_vf10d"]
+modification_count = 1
+modifications/0 = SubResource("SkeletonModification2DJiggle_ct3p0")
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_3w5km"]
+b = Vector2(16, 0)
+
+[sub_resource type="Animation" id="Animation_nsfvt"]
+resource_name = "extend"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Upper:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(20, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Upper/Lower:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(20, 0), Vector2(40, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Upper/Lower/Lower2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.7, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(40, 0), Vector2(60, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Upper/Lower/Lower2/Lower3:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.2, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(60, 0), Vector2(80, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Upper:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.99996, 0.99996), Vector2(5, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ydtg0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Upper:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Upper/Lower:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(5, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Upper/Lower/Lower2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(5, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Upper/Lower/Lower2/Lower3:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(20, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Upper:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.99996, 0.99996)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t6t0p"]
+_data = {
+"RESET": SubResource("Animation_ydtg0"),
+"extend": SubResource("Animation_nsfvt")
+}
+
+[node name="Arm" type="Skeleton2D"]
+modification_stack = SubResource("SkeletonModificationStack2D_vf10d")
+
+[node name="Upper" type="Bone2D" parent="."]
+rest = Transform2D(1, 0, 0, 1, 0, 0)
+
+[node name="Area2D" type="Area2D" parent="Upper"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Upper/Area2D"]
+shape = SubResource("SegmentShape2D_3w5km")
+
+[node name="Lower" type="Bone2D" parent="Upper"]
+position = Vector2(5, 0)
+rest = Transform2D(1, 0, 0, 1, 5, 0)
+
+[node name="Area2D2" type="Area2D" parent="Upper/Lower"]
+scale = Vector2(0.1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Upper/Lower/Area2D2"]
+shape = SubResource("SegmentShape2D_3w5km")
+
+[node name="Lower2" type="Bone2D" parent="Upper/Lower"]
+position = Vector2(5, 0)
+rest = Transform2D(1, 0, 7.62939e-06, 1, 5, 0)
+
+[node name="Area2D2" type="Area2D" parent="Upper/Lower/Lower2"]
+scale = Vector2(0.1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Upper/Lower/Lower2/Area2D2"]
+shape = SubResource("SegmentShape2D_3w5km")
+
+[node name="Lower3" type="Bone2D" parent="Upper/Lower/Lower2"]
+position = Vector2(5, 0)
+rest = Transform2D(1, 0, 7.62939e-06, 1, 5, 0)
+
+[node name="Area2D2" type="Area2D" parent="Upper/Lower/Lower2/Lower3"]
+scale = Vector2(0.1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Upper/Lower/Lower2/Lower3/Area2D2"]
+shape = SubResource("SegmentShape2D_3w5km")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_t6t0p")
+}
+
+[node name="Target" type="Node2D" parent="."]
+position = Vector2(532, 357)
