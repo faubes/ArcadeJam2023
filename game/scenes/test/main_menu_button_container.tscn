@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://lp4cu1vsx6yr"]
+[gd_scene load_steps=10 format=3 uid="uid://lp4cu1vsx6yr"]
 
 [ext_resource type="Script" path="res://scenes/test/main_menu_controller.gd" id="1_2qg46"]
 [ext_resource type="Texture2D" uid="uid://3y2730jnvem6" path="res://PlaceholderBackground.png" id="2_dl4dc"]
@@ -19,6 +19,9 @@ font_size = 30
 [sub_resource type="LabelSettings" id="LabelSettings_4ercw"]
 font_size = 40
 font_color = Color(0.87, 0.0696, 0.0696, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_rkjvk"]
+font_size = 50
 
 [node name="Main Menu Button Container" type="Node2D"]
 script = ExtResource("1_2qg46")
@@ -210,8 +213,24 @@ offset_top = 50.0
 offset_right = 181.5
 offset_bottom = 181.0
 grow_horizontal = 2
-text = "GAME NAME Credits"
+text = "GAME NAME was made claw-sible by:"
 label_settings = SubResource("LabelSettings_wakki")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Credits" type="Label" parent="Credits"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -598.0
+offset_top = 209.0
+offset_right = 583.0
+offset_bottom = 467.0
+grow_horizontal = 2
+text = "LEAD CLAWGRAMMER: Joel Faubert
+LEAD PROGRABBER: Eric Dalrymple
+WROTE THE CRABITS: Ivan Boyko"
+label_settings = SubResource("LabelSettings_rkjvk")
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
