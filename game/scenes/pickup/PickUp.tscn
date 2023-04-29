@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dyu7s1jrvo5w7"]
+
+[ext_resource type="Script" path="res://scenes/pickup/PickUp.gd" id="1_it5ws"]
+[ext_resource type="Texture2D" uid="uid://becdn28o1fxr6" path="res://assets/pickup.svg" id="2_w05q6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5bf33"]
+radius = 128.0
+
+[node name="PickUp" type="Node2D"]
+script = ExtResource("1_it5ws")
+size = 25
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("CircleShape2D_5bf33")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_w05q6")
