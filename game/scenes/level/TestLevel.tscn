@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://juymhj4t7nlh"]
+
+[ext_resource type="PackedScene" uid="uid://dte16d778t1xn" path="res://scenes/player/Player.tscn" id="1_4iu7c"]
+
+[node name="TestLevel" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_4iu7c")]
+position = Vector2(493, 320)
+rotation = -1.06122
