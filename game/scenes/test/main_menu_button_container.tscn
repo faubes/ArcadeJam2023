@@ -1,0 +1,95 @@
+[gd_scene load_steps=6 format=3 uid="uid://lp4cu1vsx6yr"]
+
+[ext_resource type="Script" path="res://scenes/test/main_menu_controller.gd" id="1_2qg46"]
+[ext_resource type="Texture2D" uid="uid://dws57npm36v7t" path="res://icon.svg" id="2_oeoru"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wakki"]
+font_size = 60
+
+[sub_resource type="LabelSettings" id="LabelSettings_sha68"]
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_yrfui"]
+font_size = 40
+
+[node name="Main Menu Button Container" type="Node2D"]
+script = ExtResource("1_2qg46")
+
+[node name="Main Menu" type="CanvasLayer" parent="."]
+
+[node name="Title" type="Label" parent="Main Menu"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -181.5
+offset_top = 50.0
+offset_right = 181.5
+offset_bottom = 181.0
+grow_horizontal = 2
+text = "GAME NAME"
+label_settings = SubResource("LabelSettings_wakki")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="SelectedIndicator" type="TextureRect" parent="Main Menu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -793.5
+offset_top = -355.5
+offset_right = -358.5
+offset_bottom = -292.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_oeoru")
+expand_mode = 2
+
+[node name="Play Game" type="Label" parent="Main Menu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -197.0
+offset_top = -72.5
+offset_right = 197.0
+offset_bottom = -0.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "START GRABBIN'"
+label_settings = SubResource("LabelSettings_sha68")
+horizontal_alignment = 1
+
+[node name="High Score" type="Label" parent="Main Menu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -181.5
+offset_top = 14.5
+offset_right = 181.5
+offset_bottom = 72.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "BEST GRABS"
+label_settings = SubResource("LabelSettings_yrfui")
+horizontal_alignment = 1
+
+[node name="Credits" type="Label" parent="Main Menu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -181.5
+offset_top = 84.5
+offset_right = 181.5
+offset_bottom = 142.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "SNIPPED BY"
+label_settings = SubResource("LabelSettings_yrfui")
+horizontal_alignment = 1
