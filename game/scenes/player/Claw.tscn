@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dtn1p1637mkhl"]
+
+[node name="Claw" type="Node2D"]
+
+[node name="BigClaw" type="Polygon2D" parent="."]
+position = Vector2(6, 0)
+rotation = -0.0637454
+polygon = PackedVector2Array(10, -11, 2, -24, 6, -41, 15, -47, 18, -61, 26, -50, 34, -51, 43, -63, 47, -50, 57, -48, 67, -53, 66, -44, 71, -42, 77.0348, -45.1845, 76, -39, 82, -31, 82, -19, 78, -6, 69, -18, 58, -25, 39, -25, 24, -20)
+
+[node name="SmallClaw" type="Polygon2D" parent="."]
+position = Vector2(-1, -1)
+polygon = PackedVector2Array(17, -6, 29, -12, 35, -7, 40, -2, 49, -1, 53, -4, 50, 3, 39, 8, 27, 6)
