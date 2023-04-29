@@ -1,6 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://cvdxrhqgjob5q"]
+[gd_scene load_steps=7 format=3 uid="uid://cvdxrhqgjob5q"]
 
 [ext_resource type="PackedScene" uid="uid://c6pmtx61qbv1v" path="res://scenes/ui/JoystickDebug.tscn" id="1_3wdwb"]
+[ext_resource type="Script" path="res://auto/main_menu_controller.gd" id="2_kuwdw"]
+[ext_resource type="Texture2D" uid="uid://dws57npm36v7t" path="res://icon.svg" id="2_lsaij"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4ias8"]
+font_size = 60
+
+[sub_resource type="LabelSettings" id="LabelSettings_sha68"]
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_yrfui"]
+font_size = 40
 
 [node name="MultiControllers" type="Node2D"]
 
@@ -56,3 +67,86 @@ offset_left = -40.0
 offset_right = 0.0
 grow_horizontal = 0
 device_id = 3
+
+[node name="Main Menu" type="CanvasLayer" parent="."]
+
+[node name="Title" type="Label" parent="Main Menu"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -181.5
+offset_top = 50.0
+offset_right = 181.5
+offset_bottom = 181.0
+grow_horizontal = 2
+text = "GAME NAME"
+label_settings = SubResource("LabelSettings_4ias8")
+horizontal_alignment = 1
+
+[node name="Main Menu Button Container" type="Node2D" parent="Main Menu"]
+script = ExtResource("2_kuwdw")
+
+[node name="SINode" type="Node2D" parent="Main Menu/Main Menu Button Container"]
+
+[node name="SelectedIndicator" type="TextureRect" parent="Main Menu/Main Menu Button Container/SINode"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -217.5
+offset_top = -31.5
+offset_right = 217.5
+offset_bottom = 31.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_lsaij")
+expand_mode = 2
+
+[node name="Play Game" type="Label" parent="Main Menu/Main Menu Button Container"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 379.0
+offset_top = 251.5
+offset_right = 773.0
+offset_bottom = 323.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "START GRABBIN'"
+label_settings = SubResource("LabelSettings_sha68")
+horizontal_alignment = 1
+
+[node name="High Score" type="Label" parent="Main Menu/Main Menu Button Container"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 394.5
+offset_top = 338.5
+offset_right = 757.5
+offset_bottom = 396.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "BEST GRABS"
+label_settings = SubResource("LabelSettings_yrfui")
+horizontal_alignment = 1
+
+[node name="Credits" type="Label" parent="Main Menu/Main Menu Button Container"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 394.5
+offset_top = 408.5
+offset_right = 757.5
+offset_bottom = 466.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "SNIPPED BY"
+label_settings = SubResource("LabelSettings_yrfui")
+horizontal_alignment = 1
