@@ -6,7 +6,6 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_arsns"]
 
 [node name="Player" type="StaticBody2D"]
-rotation = -1.56916
 script = ExtResource("1_vwkk2")
 
 [node name="GrooveJoint2D" type="GrooveJoint2D" parent="."]

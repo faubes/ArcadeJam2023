@@ -1,13 +1,15 @@
 extends StaticBody2D
 
-@onready var groove_joint_2d = $GrooveJoint2D
-@onready var claw = $GrooveJoint2D/Claw
+@onready var groove_joint_2d : GrooveJoint2D = $GrooveJoint2D
+@onready var claw : Claw = $GrooveJoint2D/Claw
 
-@export var min_range = 100
-@export var speed = 500
-@export var retract_speed = 1000
+@export var min_range : float = 100
+@export var speed : float = 500
+@export var retract_speed : float = 1000
 
 @export var player_id : int = 0
+
+
 enum hand_state { closed, open }
 enum arm_state { retracted, extending, retracting }
 
@@ -45,13 +47,23 @@ func _input(event):
 	if event.device != player_id:
 		return
 	
+	match current_hand_state:
+		hand_state.open:
+			if event.is_action_pressed("ReelIn"):
+				claw.close()
+				current_hand_state = hand_state.closed
+		hand_state.closed:
+			if event.is_action_pressed("ReelIn"):
+				claw.open()
+				current_hand_state = hand_state.open
+
 	match current_arm_state:
 		arm_state.retracted:
 			if event.is_action_pressed("TiltClockwise"):
-				var new_rotation = clampf(rotation + 0.1, phase_angle, phase_angle + PI/2)
+				var new_rotation = clampf(rotation - 0.1, phase_angle, phase_angle + PI/2)
 				rotation = new_rotation
 			if event.is_action_pressed("TiltCounterclockwise"):
-				var new_rotation = clampf(rotation - 0.1, phase_angle, phase_angle + PI/2)
+				var new_rotation = clampf(rotation + 0.1, phase_angle, phase_angle + PI/2)
 				rotation = new_rotation
 			
 			if event.is_action_pressed("FireHand"):
