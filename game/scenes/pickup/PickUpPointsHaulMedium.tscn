@@ -7,10 +7,8 @@ resource_local_to_scene = true
 radius = 128.0
 
 [node name="PickUpPointHaulMedium" instance=ExtResource("1_gcfny")]
-mass = 2
 pointValue = 30
 size = 20
-mass = 2
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_jqw8s")

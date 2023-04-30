@@ -1,10 +1,9 @@
-extends Node
+extends RigidBody2D
 class_name PickUp
 
 @export_group("General")
 @export var pointValue := 0
 @export var size := 10
-@export var mass := 1
 @export_node_path("PickUpBehaviour") var grabBehaviour
 @export_node_path("PickUpBehaviour") var consumeBehaviour
 @export var destroyOnGrab : bool = false
@@ -28,15 +27,16 @@ var initialRadius = 0
 func _ready():
 	initShape()
 
-func _process(_delta):
+func _physics_process(_delta):
 	if (!grabbed):
 		currentRotation += rotationSpeed * _delta
 		while (currentRotation > PI * 2.0):
 			currentRotation -= PI * 2.0
 		
 		var newOffset = initialOffset.rotated(currentRotation)
-		self.position = GameCore.get_center_point() + newOffset;
-	
+		var targetPosition : Vector2 = GameCore.get_center_point() + newOffset
+		var toTarget = targetPosition - self.position
+		self.apply_central_force(toTarget)
 
 func initShape():
 	# Change the size of the collision shape according to the size setting.
