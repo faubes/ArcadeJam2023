@@ -15,11 +15,6 @@ func _ready():
 	# Initialize randomization
 	randomize()
 	load_game()
-#	add_player_score(0, 5)
-#	add_player_score(1, 10)
-#	add_player_score(2, 25)
-#	add_player_score(3, 500)
-#	check_best_score()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

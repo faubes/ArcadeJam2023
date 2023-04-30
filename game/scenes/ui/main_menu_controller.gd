@@ -22,6 +22,8 @@ enum NameType {NONAME, PACMAN, SISPROJECTS}
 @onready var NoNames = ["Player0", "Player1", "Player2", "Player3"]
 @onready var PacmanNames = ["Blinky", "Pinky", "Inky", "Clyde"]
 @onready var SISNames = ["SierraDelta", "Parkside", "Chlorine", "Burgerman"]
+@onready var high_score_list = $"High Scores/HighScoreList"
+@onready var prefixList = ["1st: ", "2nd: ", "3rd: ", "4th: ", "5th: ", "6th: ", "7th: ", "8th: ", "9th: ", "10th: "]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -48,7 +50,8 @@ func _input(event):
 			StartGame()
 		elif SelectedOption == SelectedMainMenuOption.HIGH_SCORES:
 			MainMenu.set_visible(false)
-			HighScores.set_visible(true)
+			SetHighScores()
+			HighScores.set_visible(true)			
 		elif SelectedOption == SelectedMainMenuOption.CREDITS:
 			MainMenu.set_visible(false)
 			Credits.set_visible(true)
@@ -112,3 +115,12 @@ func TogglePlayerNames():
 		PlayerNameType = NameType.NONAME
 		for i in range(0, PlayerNameObjects.size()):
 			PlayerNameObjects[i].text = NoNames[i]
+
+func SetHighScores():
+	# bestScoreArray is authoritative while the game is running.
+	# We save it when it changes and we only load at game start.
+	var highScoreText = ""
+	for i in range(0, GameCore.bestScoreArray.size()):
+		highScoreText += prefixList[i] + str(GameCore.bestScoreArray[i]) + "\n"
+	
+	high_score_list.text = highScoreText
