@@ -71,6 +71,8 @@ func _on_grab_area_body_entered(body):
 	# only consume pickups if claw is closing
 	if not is_closing:
 		return
+	close()
+	player_owner.set_hand_state(Player.hand_state.closed)
 	var pickup = body as PickUp
 	if pickup:
 		grab_pickup(pickup)
