@@ -226,12 +226,13 @@ _data = {
 radius = 32.0
 
 [node name="Claw" type="RigidBody2D"]
+max_contacts_reported = 6
+contact_monitor = true
 lock_rotation = true
 script = ExtResource("1_ovkym")
 
 [node name="ClawCollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_hc2jl")
-disabled = true
 
 [node name="BigClaw" type="Polygon2D" parent="."]
 position = Vector2(-40, 21)
@@ -256,4 +257,5 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_04pnv")
 disabled = true
 
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
 [connection signal="body_entered" from="GrabArea" to="." method="_on_grab_area_body_entered"]

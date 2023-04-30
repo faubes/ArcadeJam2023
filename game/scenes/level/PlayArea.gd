@@ -32,8 +32,20 @@ func _process(delta):
 func _draw():
 	draw_rect(areaRect, Color.CRIMSON, false, 1.0)
 
-func get_play_area_rect():
+func get_rect():
 	return areaRect
+
+func get_center():
+	return areaRect.position + areaRect.size * 0.5
+
+func get_width():
+	return areaRect.size.x
+
+func get_height():
+	return areaRect.size.y
+
+func get_inner_radius():
+	return min(areaRect.size.x, areaRect.size.y) * 0.5
 
 func initPlayAreaRect():
 	var viewportPosition = get_viewport_rect().position
