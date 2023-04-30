@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3]
+[gd_scene load_steps=10 format=3 uid="uid://bssy6wghbgyue"]
 
 [ext_resource type="Script" path="res://scenes/ui/main_menu_controller.gd" id="1_2qg46"]
 [ext_resource type="Texture2D" uid="uid://3y2730jnvem6" path="res://PlaceholderBackground.png" id="2_dl4dc"]

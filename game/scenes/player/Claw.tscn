@@ -100,7 +100,7 @@ tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/path = NodePath("GrabArea/GrabAreaShape:disabled")
 tracks/4/interp = 1
-tracks/4/loop_wrap = true
+tracks/4/loop_wrap = false
 tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(1, 1),
@@ -147,6 +147,7 @@ script = ExtResource("1_ovkym")
 
 [node name="ClawCollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_hc2jl")
+disabled = true
 
 [node name="BigClaw" type="Polygon2D" parent="."]
 position = Vector2(-40, 21)
@@ -164,6 +165,8 @@ libraries = {
 }
 
 [node name="GrabArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
 
 [node name="GrabAreaShape" type="CollisionShape2D" parent="GrabArea"]
 shape = SubResource("CircleShape2D_04pnv")

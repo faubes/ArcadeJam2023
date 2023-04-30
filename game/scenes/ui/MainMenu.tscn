@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://cg3myhwy02t0j"]
+
+[ext_resource type="PackedScene" uid="uid://bssy6wghbgyue" path="res://scenes/ui/main_menu_button_container.tscn" id="1_3gdge"]
+[ext_resource type="PackedScene" uid="uid://bibx55ihhqyln" path="res://scenes/test/MultiControllers.tscn" id="2_bf20s"]
+[ext_resource type="PackedScene" uid="uid://q5bjny8mw82f" path="res://scenes/level/Arena.tscn" id="3_t2g4h"]
+
+[node name="MainMenu" type="Node2D"]
+
+[node name="Main Menu Button Container" parent="." instance=ExtResource("1_3gdge")]
+
+[node name="MultiControllers" parent="." instance=ExtResource("2_bf20s")]
+
+[node name="Arena" parent="." instance=ExtResource("3_t2g4h")]
