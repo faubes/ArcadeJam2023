@@ -13,6 +13,8 @@ $"Main Menu/Player Ready Container/Player1/Player1 Ready",
 $"Main Menu/Player Ready Container/Player2/Player2 Ready",
 $"Main Menu/Player Ready Container/Player3/Player3 Ready"]
 
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	ResetMenu()

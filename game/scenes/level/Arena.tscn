@@ -1,10 +1,41 @@
-[gd_scene load_steps=4 format=3 uid="uid://q5bjny8mw82f"]
+[gd_scene load_steps=7 format=3 uid="uid://q5bjny8mw82f"]
 
+[ext_resource type="Script" path="res://scenes/level/Arena.gd" id="1_4ycsb"]
 [ext_resource type="PackedScene" uid="uid://dte16d778t1xn" path="res://scenes/player/Player.tscn" id="1_wd7dh"]
 [ext_resource type="Material" uid="uid://dbaq0xu8p1wo4" path="res://assets/shaders/pixelate_shader_material.tres" id="2_3mkm2"]
 [ext_resource type="PackedScene" uid="uid://dyu7s1jrvo5w7" path="res://scenes/pickup/PickUp.tscn" id="3_sgybq"]
 
+[sub_resource type="Animation" id="Animation_p6gea"]
+resource_name = "level1"
+length = 300.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 3, 6.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"_on_spawn_PickUp"
+}, {
+"args": [],
+"method": &"_on_spawn_PickUp"
+}, {
+"args": [],
+"method": &"_on_spawn_PickUp"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vec71"]
+_data = {
+"level1": SubResource("Animation_p6gea")
+}
+
 [node name="Arena" type="Node2D"]
+script = ExtResource("1_4ycsb")
 
 [node name="Player0" parent="." instance=ExtResource("1_wd7dh")]
 position = Vector2(33, 608)
@@ -39,3 +70,8 @@ scale = Vector2(28.796, 16.1772)
 
 [node name="PickUp" parent="." instance=ExtResource("3_sgybq")]
 position = Vector2(511, 370)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vec71")
+}
