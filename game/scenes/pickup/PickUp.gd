@@ -5,11 +5,14 @@ class_name PickUp
 @export var pointValue := 0
 @export var size := 10
 @export var mass := 1
-@export var consumeBehaviours : Array[PickUpBehaviour] = []
+@export_node_path("PickUpBehaviour") var grabBehaviour
+@export_node_path("PickUpBehaviour") var consumeBehaviour
+@export var destroyOnGrab : bool = false
+@export var destroyOnConsume : bool = true
 
 @export_group("Visual Effects")
-@export_node_path("GPUParticles2D") var grabParticles = null
-@export_node_path("GPUParticles2D") var consumeParticles = null
+var grabParticles : GPUParticles2D = null
+var consumeParticles : GPUParticles2D = null
 
 @onready var collisionShape = $CollisionShape2D
 @onready var sprite = $Sprite2D
@@ -20,13 +23,28 @@ var initialSize = 0
 func _ready():
 	initShape()
 
+func grab(grabbingPlayer : Player):
+	if (grabBehaviour != null):
+		(get_node(grabBehaviour) as PickUpBehaviour).perform(self, grabbingPlayer)
+	
+	# Notify the game operator
+	GameCore.onPickUpGrabbed.emit()
+	
+	# Destroy if needed
+	if (destroyOnGrab):
+		queue_free()
 
-func _on_consumed(_playerObject):
+func consume(consumingPlayer : Player):
 	# Implement what happens when this power up is consumed.
-	for consumeBehaviour in consumeBehaviours:
-		consumeBehaviour.perform(self)
-	queue_free()
-
+	if (consumeBehaviour != null):
+		(get_node(consumeBehaviour) as PickUpBehaviour).perform(self, consumingPlayer)
+	
+	# Notify the game operator
+	GameCore.onPickUpConsumed.emit()
+	
+	# Destroy if needed
+	if (destroyOnConsume):
+		queue_free()
 
 func initShape():
 	# Change the size of the collision shape according to the size setting.

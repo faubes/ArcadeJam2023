@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_5bf33"]
 radius = 128.0
 
-[node name="RigidBody2D" type="RigidBody2D"]
+[node name="PickUp" type="RigidBody2D"]
 collision_layer = 2
 collision_mask = 3
 gravity_scale = 0.0

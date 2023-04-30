@@ -2,7 +2,7 @@ extends Node2D
 class_name Arena
 
 @onready var pickup_scene = preload("res://scenes/pickup/PickUp.tscn")
-@onready var large_pickup_scene = preload("res://scenes/pickup/PickUpBasicPointsLarge.tscn")
+@onready var large_pickup_scene = preload("res://scenes/pickup/PickUpPointsHaulLarge.tscn")
 @onready var animation_player = $AnimationPlayer
 @onready var center : Vector2 = get_viewport_rect().size/2
 
