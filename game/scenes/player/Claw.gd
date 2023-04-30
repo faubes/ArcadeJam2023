@@ -7,6 +7,11 @@ class_name Claw
 @onready var grab_area_shape = $GrabArea/GrabAreaShape
 
 
+var player_owner : Player
+
+func set_player(new_player : Player):
+	player_owner = new_player
+
 func set_color(new_color):
 	big_claw.color = new_color
 	small_claw.color = new_color
@@ -31,3 +36,16 @@ func _on_grab_area_body_entered(body):
 		pickup._on_consumed(self)
 	if body:
 		print("Body {name} entered {this}".format({"name" : body.name, "this" : self.name}))
+
+
+func recoil():
+	open()
+	player_owner.recoil()
+
+func _on_body_shape_entered(body_rid, body, _body_shape_index, _local_shape_index):
+	if body_rid == self.get_rid():
+		return
+	var other_claw = body as Claw
+	if other_claw:
+		recoil()
+		other_claw.recoil()

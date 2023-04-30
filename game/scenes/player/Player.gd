@@ -30,10 +30,11 @@ func _ready():
 	if player_id == 2 or player_id == 3:
 		player_flip_sign = -1
 	
-	claw.global_position = self.global_position + min_range * Vector2.RIGHT
-	print("{player} {angle}".format({"player" : player_id, "angle" : phase_angle}))
 	claw.set_color(player_color)
-	target_angle = phase_angle
+	claw.set_player(self)
+	#claw.global_position = self.global_position + min_range * Vector2.RIGHT
+	print("{player} {angle}".format({"player" : player_id, "angle" : phase_angle}))
+	target_angle = phase_angle + PI/4
 	rotation = target_angle
 	
 	
@@ -103,7 +104,6 @@ func _input(event):
 	match current_arm_state:
 		arm_state.retracted:
 			if event.is_action_pressed("FireHand"):
-				print("FireHand")
 				claw.linear_velocity = Vector2.ZERO
 				set_arm_state(arm_state.extending)
 				target_angle = rotation # stop rotating
@@ -113,3 +113,9 @@ func _input(event):
 			if event.is_action_pressed("TiltCounterclockwise"):
 				switch_rotation = true
 				current_rotation_input = -1 * player_flip_sign
+
+
+func recoil():
+	if current_arm_state == arm_state.extending or current_arm_state == arm_state.retracting:
+		claw.apply_impulse(-0.3 * retract_speed * transform.basis_xform(Vector2.DOWN))
+		set_arm_state(arm_state.retracting)
