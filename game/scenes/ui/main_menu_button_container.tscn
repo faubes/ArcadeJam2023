@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bssy6wghbgyue"]
+[gd_scene load_steps=11 format=3 uid="uid://bssy6wghbgyue"]
 
 [ext_resource type="Script" path="res://scenes/ui/main_menu_controller.gd" id="1_2qg46"]
 [ext_resource type="Texture2D" uid="uid://3y2730jnvem6" path="res://PlaceholderBackground.png" id="2_dl4dc"]
@@ -22,6 +22,10 @@ font_color = Color(0.87, 0.0696, 0.0696, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_rkjvk"]
 font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_xqjfy"]
+line_spacing = 1.0
+font_size = 32
 
 [node name="Main Menu Button Container" type="Node2D"]
 script = ExtResource("1_2qg46")
@@ -213,7 +217,21 @@ offset_top = 50.0
 offset_right = 181.5
 offset_bottom = 181.0
 grow_horizontal = 2
-text = "GAME NAME was made claw-sible by:"
+text = "GAME NAME"
+label_settings = SubResource("LabelSettings_wakki")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Title2" type="Label" parent="Credits"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -348.0
+offset_top = 136.0
+offset_right = 364.0
+offset_bottom = 267.0
+grow_horizontal = 2
+text = " was made claw-sible by:"
 label_settings = SubResource("LabelSettings_wakki")
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -222,10 +240,10 @@ metadata/_edit_use_anchors_ = true
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -598.0
-offset_top = 209.0
-offset_right = 583.0
-offset_bottom = 467.0
+offset_left = -595.0
+offset_top = 265.0
+offset_right = 586.0
+offset_bottom = 523.0
 grow_horizontal = 2
 text = "LEAD CLAWGRAMMER: Joel Faubert
 LEAD PROGRABBER: Eric Dalrymple
@@ -253,7 +271,26 @@ offset_top = 50.0
 offset_right = 181.5
 offset_bottom = 181.0
 grow_horizontal = 2
-text = "GAME NAME High Scores"
+text = "HIGH SCORES"
 label_settings = SubResource("LabelSettings_wakki")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="HighScoreList" type="Label" parent="High Scores"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -359.0
+offset_top = -150.0
+offset_right = 359.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "1st: 0
+2nd: 0
+3rd: 0"
+label_settings = SubResource("LabelSettings_xqjfy")
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true

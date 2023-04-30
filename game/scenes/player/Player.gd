@@ -10,11 +10,11 @@ class_name Player
 
 @export var player_id : int = 0
 @export var player_color : Color
+@export var phase_angle : float
 
 enum hand_state { closed, open }
 enum arm_state { retracted, extending, retracting }
 
-@onready var phase_angle : float = player_id * PI/2 + PI
 
 var current_hand_state : hand_state = hand_state.closed
 var current_arm_state : arm_state = arm_state.retracted
@@ -26,15 +26,13 @@ var player_flip_sign = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if player_id == 2 or player_id == 3:
-		player_flip_sign = -1
-	
-	claw.global_position = self.global_position + min_range * Vector2.RIGHT
-	print("{player} {angle}".format({"player" : player_id, "angle" : phase_angle}))
 	claw.set_color(player_color)
-	target_angle = phase_angle
+	claw.set_player(self)
+	#claw.global_position = self.global_position + min_range * Vector2.RIGHT
+	print("{player} start angle: {angle} end angle: {end_angle}" \
+		.format({"player" : player_id, "angle" : phase_angle, "end_angle" : phase_angle + PI/2}))
+	target_angle = phase_angle + PI/4
 	rotation = target_angle
-	
 
 func set_arm_state(new_state : arm_state):
 	if current_arm_state == new_state:
@@ -46,7 +44,10 @@ func set_arm_state(new_state : arm_state):
 func _physics_process(delta):
 	match current_arm_state:
 		arm_state.retracted:
-			claw.linear_velocity = Vector2.ZERO
+			if claw.global_position.distance_to(self.global_position) > min_range * 1.1:
+				set_arm_state(arm_state.retracting)
+			else:
+				claw.linear_velocity = Vector2.ZERO
 		arm_state.extending:
 			if claw.global_position.distance_to(self.global_position) > groove_joint_2d.length * 0.9:
 				claw.linear_velocity = Vector2.ZERO
@@ -73,6 +74,9 @@ func _physics_process(delta):
 
 
 func _input(event):
+	if !GameCore.inGame:
+		return
+	
 	if event.device != player_id:
 		return
 	
@@ -90,7 +94,6 @@ func _input(event):
 	match current_arm_state:
 		arm_state.retracted:
 			if event.is_action_pressed("FireHand"):
-				print("FireHand")
 				claw.linear_velocity = Vector2.ZERO
 				set_arm_state(arm_state.extending)
 				target_angle = rotation # stop rotating
@@ -100,3 +103,9 @@ func _input(event):
 			if event.is_action_pressed("TiltCounterclockwise"):
 				switch_rotation = true
 				current_rotation_input = -1 * player_flip_sign
+
+
+func recoil():
+	if current_arm_state == arm_state.extending or current_arm_state == arm_state.retracting:
+		claw.apply_impulse(-0.3 * retract_speed * transform.basis_xform(Vector2.DOWN))
+		set_arm_state(arm_state.retracting)

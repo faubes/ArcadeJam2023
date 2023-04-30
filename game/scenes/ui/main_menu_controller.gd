@@ -12,8 +12,18 @@ enum SelectedMainMenuOption { PLAY_GAME, HIGH_SCORES, CREDITS}
 $"Main Menu/Player Ready Container/Player1/Player1 Ready",
 $"Main Menu/Player Ready Container/Player2/Player2 Ready",
 $"Main Menu/Player Ready Container/Player3/Player3 Ready"]
+@onready var MainTitle = $"Main Menu/Title"
+@onready var CreditsTitle = $"Credits/Title"
+@onready var GameNameList = ["Snip It Up", "Snip, Snip, MotherCrabbers", "Gimme Gimme", "Grabby Crabby", "Claw of the Jungle", "Lay Down The Claw", "Fight Claw", "Fight Clawb"]
 
-
+@onready var PlayerNameObjects = [$"Main Menu/Player Ready Container/Player0", $"Main Menu/Player Ready Container/Player1", $"Main Menu/Player Ready Container/Player2", $"Main Menu/Player Ready Container/Player3"]
+enum NameType {NONAME, PACMAN, SISPROJECTS}
+@onready var PlayerNameType : NameType = NameType.NONAME
+@onready var NoNames = ["Player0", "Player1", "Player2", "Player3"]
+@onready var PacmanNames = ["Blinky", "Pinky", "Inky", "Clyde"]
+@onready var SISNames = ["SierraDelta", "Parkside", "Chlorine", "Burgerman"]
+@onready var high_score_list = $"High Scores/HighScoreList"
+@onready var prefixList = ["1st: ", "2nd: ", "3rd: ", "4th: ", "5th: ", "6th: ", "7th: ", "8th: ", "9th: ", "10th: "]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -27,36 +37,49 @@ func _input(event):
 	if !MainMenu.is_visible() && !Credits.is_visible() && !HighScores.is_visible():
 		return
 		
+	if GameCore.inGame:
+		return
+		
 	#Menu Inputs
 	if event.is_action_pressed("MenuUp") && MainMenu.is_visible():
 		NavigateMenu(true)
 	if event.is_action_pressed("MenuDown") && MainMenu.is_visible():
 		NavigateMenu(false)
-	if event.is_action_pressed("SelectButton") && MainMenu.is_visible():
+	if event.is_action_released("SelectButton") && MainMenu.is_visible():
 		if SelectedOption == SelectedMainMenuOption.PLAY_GAME:
 			StartGame()
 		elif SelectedOption == SelectedMainMenuOption.HIGH_SCORES:
 			MainMenu.set_visible(false)
-			HighScores.set_visible(true)
+			SetHighScores()
+			HighScores.set_visible(true)			
 		elif SelectedOption == SelectedMainMenuOption.CREDITS:
 			MainMenu.set_visible(false)
 			Credits.set_visible(true)
-	if event.is_action_pressed("ReadyPlayer"):
+	if event.is_action_released("ReadyPlayer"):
 		if MainMenu.is_visible():
 			ToggleReadyIndicator(event.device)
 		else:
 			ResetMenu()
+	if event.is_action_released("TogglePlayerNames"):
+		TogglePlayerNames()
 
-func NavigateMenu(up):
+func NavigateMenu(up: bool):
 	if (up && SelectedOption != SelectedMainMenuOption.PLAY_GAME):
-		SelectedOption = SelectedOption - 1
+		SelectedOption = SelectedOption - 1 as SelectedMainMenuOption
 	elif (!up && SelectedOption != SelectedMainMenuOption.CREDITS):
-		SelectedOption = SelectedOption + 1
+		SelectedOption = SelectedOption + 1 as SelectedMainMenuOption
 	SelectedButton.set_position(ButtonList[SelectedOption].position)
 	SelectedButton.set_size(ButtonList[SelectedOption].size)
 	
 func ResetMenu():
 	SelectedOption = SelectedMainMenuOption.PLAY_GAME
+	GameCore.inGame = false
+	
+	# Set various game names
+	randomize()
+	var index = randi_range(0, GameNameList.size()-1)
+	MainTitle.text = GameNameList[index]
+	CreditsTitle.text = GameNameList[index]
 	#Set initial button position.
 	NavigateMenu(true)
 	MainMenu.set_visible(true)
@@ -70,10 +93,34 @@ func ShowReadyIndicators():
 	for i in range(0, ReadyList.size()):
 		ReadyIndicatorList[i].set_visible(ReadyList[i])
 
-func ToggleReadyIndicator(playerId):
+func ToggleReadyIndicator(playerId : int):
 	ReadyList[playerId] = !ReadyList[playerId]
 	ShowReadyIndicators()
 
 func StartGame():
 	$"Main Menu".set_visible(false)
 	#Some event up to Game Manager to pass along the ready player list.
+	GameCore.inGame = true
+	
+func TogglePlayerNames():
+	if (PlayerNameType == NameType.NONAME):
+		PlayerNameType = NameType.PACMAN
+		for i in range(0, PlayerNameObjects.size()):
+			PlayerNameObjects[i].text = PacmanNames[i]
+	elif (PlayerNameType == NameType.PACMAN):
+		PlayerNameType = NameType.SISPROJECTS
+		for i in range(0, PlayerNameObjects.size()):
+			PlayerNameObjects[i].text = SISNames[i]
+	elif (PlayerNameType == NameType.SISPROJECTS):
+		PlayerNameType = NameType.NONAME
+		for i in range(0, PlayerNameObjects.size()):
+			PlayerNameObjects[i].text = NoNames[i]
+
+func SetHighScores():
+	# bestScoreArray is authoritative while the game is running.
+	# We save it when it changes and we only load at game start.
+	var highScoreText = ""
+	for i in range(0, GameCore.bestScoreArray.size()):
+		highScoreText += prefixList[i] + str(GameCore.bestScoreArray[i]) + "\n"
+	
+	high_score_list.text = highScoreText
