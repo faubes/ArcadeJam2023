@@ -44,7 +44,7 @@ func set_arm_state(new_state : arm_state):
 func _physics_process(delta):
 	match current_arm_state:
 		arm_state.retracted:
-			if claw.global_position.distance_to(self.global_position) > groove_joint_2d.length * 0.1:
+			if claw.global_position.distance_to(self.global_position) > min_range * 1.1:
 				set_arm_state(arm_state.retracting)
 			else:
 				claw.linear_velocity = Vector2.ZERO
