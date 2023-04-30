@@ -2,8 +2,8 @@ extends Node2D
 class_name Arena
 
 @onready var pickup_scene = preload("res://scenes/pickup/PickUp.tscn")
+@onready var large_pickup_scene = preload("res://scenes/pickup/PickUpBasicPointsLarge.tscn")
 @onready var animation_player = $AnimationPlayer
-
 @onready var center : Vector2 = get_viewport_rect().size/2
 
 func _ready():
@@ -11,8 +11,14 @@ func _ready():
 
 func _on_spawn_PickUp():
 	print("spawn")
-	var pickup = pickup_scene.instantiate()
-	pickup.position = center + +50 * Vector2(randf(), randf())
+	var pickup : PickUp = pickup_scene.instantiate()
+	pickup.position = center + +150 * Vector2(randf(), randf())
+	add_child(pickup)
+
+func _on_spawn_Large_PickUp():
+	print("spawn Large")
+	var pickup : PickUp = large_pickup_scene.instantiate()
+	pickup.position = center + +150 * Vector2(randf(), randf())
 	add_child(pickup)
 
 func _on_spawn_num_PickUp(num : int):

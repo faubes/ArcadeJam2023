@@ -19,19 +19,13 @@ var initialSize = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	initShape()
-	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
-func _on_consumed(playerObject):
+func _on_consumed(_playerObject):
 	# Implement what happens when this power up is consumed.
 	for consumeBehaviour in consumeBehaviours:
 		consumeBehaviour.perform(self)
-
 	queue_free()
-	pass
 
 
 func initShape():
@@ -42,4 +36,3 @@ func initShape():
 	
 	var spriteScale = size / initialSize
 	sprite.scale = Vector2(spriteScale, spriteScale)
-	pass
