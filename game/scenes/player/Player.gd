@@ -33,7 +33,8 @@ func _ready():
 	claw.set_color(player_color)
 	claw.set_player(self)
 	#claw.global_position = self.global_position + min_range * Vector2.RIGHT
-	print("{player} {angle}".format({"player" : player_id, "angle" : phase_angle}))
+	print("{player} start angle: {angle} end angle: {end_angle}" \
+		.format({"player" : player_id, "angle" : phase_angle, "end_angle" : phase_angle + PI/2}))
 	target_angle = phase_angle + PI/4
 	rotation = target_angle
 	
