@@ -17,7 +17,7 @@ var consumeParticles : GPUParticles2D = null
 @onready var collisionShape : CollisionShape2D = $CollisionShape2D
 @onready var sprite : Sprite2D = $Sprite2D
 
-var initialSize = 0
+var initialRadius = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,10 +26,11 @@ func _ready():
 func initShape():
 	# Change the size of the collision shape according to the size setting.
 	var circleShape = collisionShape.shape as CircleShape2D
-	initialSize = circleShape.radius * 2
-	circleShape.radius = size
+	initialRadius = circleShape.radius
+	var targetRadius = size * 0.5
+	circleShape.radius = targetRadius
 	
-	var spriteScale = size / initialSize
+	var spriteScale = targetRadius / initialRadius
 	sprite.scale = Vector2(spriteScale, spriteScale)
 
 func grab(grabbingPlayer : Player):
