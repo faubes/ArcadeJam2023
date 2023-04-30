@@ -14,14 +14,22 @@ class_name PickUp
 var grabParticles : GPUParticles2D = null
 var consumeParticles : GPUParticles2D = null
 
-@onready var collisionShape = $CollisionShape2D
-@onready var sprite = $Sprite2D
+@onready var collisionShape : CollisionShape2D = $CollisionShape2D
+@onready var sprite : Sprite2D = $Sprite2D
 
 var initialSize = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	initShape()
+
+func initShape():
+	# Change the size of the collision shape according to the size setting.
+	initialSize = collisionShape.radius * 2
+	collisionShape.radius = size
+	
+	var spriteScale = size / initialSize
+	sprite.scale = Vector2(spriteScale, spriteScale)
 
 func grab(grabbingPlayer : Player):
 	if (grabBehaviour != null):
@@ -46,11 +54,6 @@ func consume(consumingPlayer : Player):
 	if (destroyOnConsume):
 		queue_free()
 
-func initShape():
-	# Change the size of the collision shape according to the size setting.
-	var circleShape = collisionShape.shape as CircleShape2D
-	initialSize = circleShape.radius * 2
-	circleShape.radius = size
-	
-	var spriteScale = size / initialSize
-	sprite.scale = Vector2(spriteScale, spriteScale)
+func setCollisionEnabled(enabled : bool):
+	if (collisionShape != null):
+		collisionShape.disabled = !enabled
