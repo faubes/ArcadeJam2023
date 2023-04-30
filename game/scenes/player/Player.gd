@@ -8,7 +8,7 @@ extends StaticBody2D
 @export var retract_speed : float = 1000
 
 @export var player_id : int = 0
-
+@export var player_color : Color
 
 enum hand_state { closed, open }
 enum arm_state { retracted, extending, retracting }
@@ -30,6 +30,7 @@ func _ready():
 	
 	claw.global_position = self.global_position + min_range * Vector2.RIGHT
 	print("{player} {angle}".format({"player" : player_id, "angle" : phase_angle}))
+	claw.set_color(player_color)
 	target_angle = phase_angle
 	rotation = target_angle
 	
