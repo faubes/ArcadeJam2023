@@ -69,8 +69,8 @@ func _on_grab_area_body_entered(body):
 	if body == self:
 		return
 	# only consume pickups if claw is closing
-	#if not is_closing:
-	#	return
+	if not is_closing:
+		return
 	var pickup = body as PickUp
 	if pickup:
 		grab_pickup(pickup)
