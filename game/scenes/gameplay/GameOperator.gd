@@ -24,8 +24,8 @@ func _ready():
 	PlayerNameType = NameType.NONAME
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+#func _process(delta):
+#	pass
 	
 func add_player_score(playerId: int, score : int):
 	if (playerScores.has(playerId)):
@@ -63,10 +63,10 @@ func FindCurrentBestScore():
 	return bestscore
 
 func save_game():
-	var save_game = FileAccess.open("res://savegame.save", FileAccess.WRITE)
+	var save_game_file = FileAccess.open("res://savegame.save", FileAccess.WRITE)
 	#Serialize the scores.
 	var json_string = JSON.stringify(bestScoreArray)
-	save_game.store_line(json_string)
+	save_game_file.store_line(json_string)
 
 		# JSON provides a static method to serialized JSON string.
 		#var json_string = JSON.stringify(node_data)
@@ -80,8 +80,8 @@ func load_game():
 #
 #    # Load the file line by line and process that dictionary to restore
 #    # the object it represents.
-	var save_game = FileAccess.open("res://savegame.save", FileAccess.READ)
-	var json_string = save_game.get_line()
+	var save_game_file = FileAccess.open("res://savegame.save", FileAccess.READ)
+	var json_string = save_game_file.get_line()
 #
 	# Creates the helper class to interact with JSON
 	var json = JSON.new()

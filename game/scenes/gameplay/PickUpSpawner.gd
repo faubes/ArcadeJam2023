@@ -37,7 +37,7 @@ func _ready():
 		spawnRadiusFromCenter = maxRadius
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	# Early out if there's nothing to spawn
 	if (pickUps == null || pickUps.size() == 0 || spawnWeightTotal == 0):
 		return
