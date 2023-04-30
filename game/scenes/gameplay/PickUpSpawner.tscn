@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cem5xffh581gb"]
+
+[ext_resource type="Script" path="res://scenes/gameplay/PickUpSpawner.gd" id="1_gi82d"]
+
+[node name="PickUpSpawner" type="Node"]
+script = ExtResource("1_gi82d")
