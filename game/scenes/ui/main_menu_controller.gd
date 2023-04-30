@@ -14,7 +14,7 @@ $"Main Menu/Player Ready Container/Player2/Player2 Ready",
 $"Main Menu/Player Ready Container/Player3/Player3 Ready"]
 @onready var MainTitle = $"Main Menu/Title"
 @onready var CreditsTitle = $"Credits/Title"
-@onready var GameNameList = ["Snip It Up", "Snip, Snip, MotherCrabbers", "Gimme Gimme", "Grabby Crabby", "Claw of the Jungle", "Lay Down The Claw", "Fight Claw", "Fight Clawb"]
+@onready var GameNameList = ["Snip It Up", "Snip Snip", "Gimme Gimme", "Grabby Crabby", "Claw of the Jungle", "Lay Down The Claw", "Fight Claw", "Fight Clawb"]
 
 @onready var PlayerNameObjects = [$"Main Menu/Player Ready Container/Player0", $"Main Menu/Player Ready Container/Player1", $"Main Menu/Player Ready Container/Player2", $"Main Menu/Player Ready Container/Player3"]
 @onready var high_score_list = $"High Scores/HighScoreList"

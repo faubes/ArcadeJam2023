@@ -1,11 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6vfrkaxqqn1t"]
+[gd_scene load_steps=5 format=3 uid="uid://b6vfrkaxqqn1t"]
 
 [ext_resource type="Script" path="res://scenes/level/game_ui.gd" id="1_py7ry"]
+[ext_resource type="FontFile" uid="uid://dogrj61isaepv" path="res://assets/fonts/Minimal5x5Monospaced.ttf" id="2_mjp4j"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kv12s"]
+font = ExtResource("2_mjp4j")
 font_size = 30
 
 [sub_resource type="LabelSettings" id="LabelSettings_3wesc"]
+font = ExtResource("2_mjp4j")
 font_size = 30
 font_color = Color(0.87, 0.0696, 0.0696, 1)
 
@@ -16,9 +19,10 @@ script = ExtResource("1_py7ry")
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -92.0
-offset_right = 140.0
-offset_bottom = -20.0
+offset_left = 8.0
+offset_top = -65.0
+offset_right = 177.0
+offset_bottom = 7.0
 grow_vertical = 0
 text = "Player 1"
 label_settings = SubResource("LabelSettings_kv12s")
@@ -38,9 +42,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -140.0
-offset_top = -92.0
-offset_bottom = -47.0
+offset_left = -180.0
+offset_top = -65.0
+offset_right = -11.0
+offset_bottom = -20.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "Player 2"
@@ -65,8 +70,10 @@ label_settings = SubResource("LabelSettings_3wesc")
 horizontal_alignment = 2
 
 [node name="Player2" type="Label" parent="."]
-offset_right = 140.0
-offset_bottom = 72.0
+offset_left = 11.0
+offset_top = 11.0
+offset_right = 180.0
+offset_bottom = 83.0
 text = "Player 3"
 label_settings = SubResource("LabelSettings_kv12s")
 horizontal_alignment = 1
@@ -90,8 +97,10 @@ label_settings = SubResource("LabelSettings_3wesc")
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -140.0
-offset_bottom = 72.0
+offset_left = -179.0
+offset_top = 9.0
+offset_right = -10.0
+offset_bottom = 81.0
 grow_horizontal = 0
 text = "Player 4"
 label_settings = SubResource("LabelSettings_kv12s")

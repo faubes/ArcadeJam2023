@@ -1,30 +1,38 @@
-[gd_scene load_steps=11 format=3 uid="uid://bssy6wghbgyue"]
+[gd_scene load_steps=12 format=3 uid="uid://bssy6wghbgyue"]
 
 [ext_resource type="Script" path="res://scenes/ui/main_menu_controller.gd" id="1_2qg46"]
 [ext_resource type="Texture2D" uid="uid://3y2730jnvem6" path="res://PlaceholderBackground.png" id="2_dl4dc"]
 [ext_resource type="Texture2D" uid="uid://cvy5hvrv0cpuc" path="res://PlaceholderButton.png" id="3_22if5"]
+[ext_resource type="FontFile" uid="uid://dogrj61isaepv" path="res://assets/fonts/Minimal5x5Monospaced.ttf" id="3_flnx5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wakki"]
+font = ExtResource("3_flnx5")
 font_size = 60
 
 [sub_resource type="LabelSettings" id="LabelSettings_sha68"]
+font = ExtResource("3_flnx5")
 font_size = 50
 
 [sub_resource type="LabelSettings" id="LabelSettings_yrfui"]
+font = ExtResource("3_flnx5")
 font_size = 40
 
 [sub_resource type="LabelSettings" id="LabelSettings_lox4f"]
+font = ExtResource("3_flnx5")
 font_size = 30
 
 [sub_resource type="LabelSettings" id="LabelSettings_4ercw"]
+font = ExtResource("3_flnx5")
 font_size = 40
 font_color = Color(0.87, 0.0696, 0.0696, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_rkjvk"]
+font = ExtResource("3_flnx5")
 font_size = 50
 
 [sub_resource type="LabelSettings" id="LabelSettings_xqjfy"]
 line_spacing = 1.0
+font = ExtResource("3_flnx5")
 font_size = 32
 
 [node name="Main Menu Button Container" type="Node2D"]
@@ -84,6 +92,7 @@ grow_vertical = 2
 text = "START GRABBIN'"
 label_settings = SubResource("LabelSettings_sha68")
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="High Score" type="Label" parent="Main Menu"]
 anchors_preset = 8
@@ -100,6 +109,7 @@ grow_vertical = 2
 text = "BEST GRABS"
 label_settings = SubResource("LabelSettings_yrfui")
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Credits" type="Label" parent="Main Menu"]
 anchors_preset = 8
@@ -116,6 +126,7 @@ grow_vertical = 2
 text = "SNIPPED BY"
 label_settings = SubResource("LabelSettings_yrfui")
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Player Ready Container" type="TextureRect" parent="Main Menu"]
 anchors_preset = 12
@@ -199,6 +210,7 @@ label_settings = SubResource("LabelSettings_4ercw")
 horizontal_alignment = 1
 
 [node name="Credits" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Background" type="TextureRect" parent="Credits"]
 anchors_preset = 15
@@ -253,6 +265,7 @@ horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="High Scores" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Background" type="TextureRect" parent="High Scores"]
 anchors_preset = 15
