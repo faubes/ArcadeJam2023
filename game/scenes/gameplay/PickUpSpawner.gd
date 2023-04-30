@@ -53,7 +53,7 @@ func spawnNext():
 		return
 	
 	# Choose where to spawn the pick-up
-	var spawnDistanceFromCenter = randf_range(0.0, spawnRadiusFromCenter)
+	var spawnDistanceFromCenter = randf_range(30.0, spawnRadiusFromCenter)
 	var spawnDirection = Vector2.from_angle(randf_range(0.0, PI * 2.0))
 	var spawnPosition = playArea.get_center() + (spawnDirection * spawnDistanceFromCenter)
 	

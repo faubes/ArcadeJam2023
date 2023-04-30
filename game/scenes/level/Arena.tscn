@@ -82,7 +82,7 @@ letterboxA = NodePath("../LetterboxA")
 letterboxB = NodePath("../LetterboxB")
 
 [node name="PickUpSpawner" parent="." instance=ExtResource("3_u7xs0")]
-minSpawns = 20
+minSpawns = 10
 spawnRadiusFromCenter = 0.0
 playAreaPath = NodePath("../PlayArea")
 

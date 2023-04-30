@@ -12,5 +12,12 @@ pointValue = 50
 size = 30
 mass = 3
 
+[node name="Sprite2D" parent="." index="0"]
+hframes = 32
+vframes = 40
+
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_nyyyf")
+
+[node name="AnimatedSprite2D" parent="." index="3"]
+frame = 60

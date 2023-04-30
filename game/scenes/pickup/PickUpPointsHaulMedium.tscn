@@ -14,3 +14,6 @@ mass = 2
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_jqw8s")
+
+[node name="AnimatedSprite2D" parent="." index="3"]
+frame = 31

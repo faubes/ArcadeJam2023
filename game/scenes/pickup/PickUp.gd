@@ -16,8 +16,9 @@ var consumeParticles : GPUParticles2D = null
 
 @onready var collisionShape : CollisionShape2D = $CollisionShape2D
 @onready var sprite : Sprite2D = $Sprite2D
+@onready var asprite : AnimatedSprite2D = $AnimatedSprite2D
 @onready var grabbed : bool = false
-@onready var rotationSpeed : float = randf_range(PI * 0.125, PI * 1.0)
+@onready var rotationSpeed : float = randf_range(PI * 0.05, PI * 0.8)
 @onready var currentRotation : float = 0.0
 @onready var initialOffset : Vector2 = self.position - GameCore.get_center_point();
 
@@ -46,6 +47,7 @@ func initShape():
 	
 	var spriteScale = targetRadius / initialRadius
 	sprite.scale = Vector2(spriteScale, spriteScale)
+	asprite.scale = Vector2(1.5, 1.5)
 
 func grab(grabbingPlayer : Player):
 	grabbed = true
