@@ -25,5 +25,9 @@ func close() -> void :
 func _on_grab_area_body_entered(body):
 	if body == self:
 		return
+	var pickup = body as PickUp
+	if pickup:
+		print("Body {name} consumed by {this}".format({"name" : body.name, "this" : self.name}))
+		pickup._on_consumed(self)
 	if body:
 		print("Body {name} entered {this}".format({"name" : body.name, "this" : self.name}))
