@@ -10,6 +10,7 @@ var PlayerNameType : NameType = NameType.NONAME
 var NoNames = ["Player0", "Player1", "Player2", "Player3"]
 var PacmanNames = ["Blinky", "Pinky", "Inky", "Clyde"]
 var SISNames = ["SierraDelta", "Parkside", "Chlorine", "Burgerman"]
+var playArea : PlayArea = null
 
 var inGame : bool = false
 
@@ -22,6 +23,15 @@ func _ready():
 	randomize()
 	load_game()
 	PlayerNameType = NameType.NONAME
+
+func set_play_area(area : PlayArea):
+	playArea = area
+
+func get_center_point():
+	if (playArea == null):
+		return get_viewport().get_visible_rect().position + get_viewport().get_visible_rect().size * 0.5
+	else:
+		return playArea.get_center()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

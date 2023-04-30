@@ -31,7 +31,7 @@ func _ready():
 		spawnWeightTotal += weight
 	
 	# Clamp the spawn area to the play area
-	var maxRadius = playArea.get_inner_radius()
+	var maxRadius = playArea.get_inner_radius() * 0.75
 	if (spawnRadiusFromCenter <= 0 || (spawnRadiusFromCenter > maxRadius)):
 		spawnRadiusFromCenter = maxRadius
 
