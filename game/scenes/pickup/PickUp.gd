@@ -1,10 +1,9 @@
-extends Node
+extends RigidBody2D
 class_name PickUp
 
 @export_group("General")
 @export var pointValue := 0
 @export var size := 10
-@export var mass := 1
 @export_node_path("PickUpBehaviour") var grabBehaviour
 @export_node_path("PickUpBehaviour") var consumeBehaviour
 @export var destroyOnGrab : bool = false
@@ -18,7 +17,7 @@ var consumeParticles : GPUParticles2D = null
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var asprite : AnimatedSprite2D = $AnimatedSprite2D
 @onready var grabbed : bool = false
-@onready var rotationSpeed : float = randf_range(PI * 0.05, PI * 0.8)
+@onready var rotationSpeed : float =  0 #randf_range(PI * 0.05, PI * 0.8)
 @onready var currentRotation : float = 0.0
 @onready var initialOffset : Vector2 = self.position - GameCore.get_center_point();
 
@@ -28,7 +27,7 @@ var initialRadius = 0
 func _ready():
 	initShape()
 
-func _process(_delta):
+func _physics_process(_delta):
 	if (!grabbed):
 		currentRotation += rotationSpeed * _delta
 		while (currentRotation > PI * 2.0):

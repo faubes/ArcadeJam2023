@@ -7,10 +7,9 @@ resource_local_to_scene = true
 radius = 128.0
 
 [node name="PickUpPointHaulLarge" instance=ExtResource("1_tuenq")]
-mass = 3
+can_sleep = false
 pointValue = 50
 size = 30
-mass = 3
 
 [node name="Sprite2D" parent="." index="0"]
 hframes = 32

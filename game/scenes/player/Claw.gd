@@ -10,7 +10,6 @@ class_name Claw
 var player_owner : Player
 var is_closing : bool = false
 var held_pickup : Array[PickUp]
-var held_pickup_parent : Node = null
 var debug : bool = false
 
 func set_player(new_player : Player):
@@ -49,20 +48,15 @@ func grab_pickup(new_pickup : PickUp):
 	if new_pickup.destroyOnGrab:
 		return
 	held_pickup.append(new_pickup)
-	held_pickup_parent = new_pickup.get_parent()
 	new_pickup.position = Vector2.ZERO
-	new_pickup.call_deferred("setCollisionEnabled", false)
-	new_pickup.call_deferred("reparent", self, false)
 	
 func drop_pickup():
 	if held_pickup.is_empty():
 		print("Unexpected: drop pickup without pickup?")
 		return
 	for item in held_pickup:
-		item.call_deferred("setCollisionEnabled", true)
-		item.call_deferred("reparent", held_pickup_parent, true)
+		item.release()
 	held_pickup = []
-	held_pickup_parent = null
 
 
 func recoil():
@@ -75,8 +69,8 @@ func _on_grab_area_body_entered(body):
 	if body == self:
 		return
 	# only consume pickups if claw is closing
-	if not is_closing:
-		return
+	#if not is_closing:
+	#	return
 	var pickup = body as PickUp
 	if pickup:
 		grab_pickup(pickup)
@@ -98,6 +92,8 @@ func _on_open_start():
 		is_closing = false
 
 
-func _process(_delta):
+func _physics_process(_delta):
 	if debug and player_owner.player_id == 0 and is_holding_pickup():
 		print(self.position)
+	for item in held_pickup:
+		item.global_position = self.global_position
