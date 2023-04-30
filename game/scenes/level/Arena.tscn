@@ -121,6 +121,7 @@ libraries = {
 }
 
 [node name="LeftWall" type="RigidBody2D" parent="."]
+collision_layer = 2
 lock_rotation = true
 freeze = true
 
@@ -128,6 +129,7 @@ freeze = true
 shape = SubResource("RectangleShape2D_ec6ix")
 
 [node name="RightWall" type="RigidBody2D" parent="."]
+collision_layer = 2
 lock_rotation = true
 freeze = true
 
@@ -135,6 +137,7 @@ freeze = true
 shape = SubResource("RectangleShape2D_f0fp4")
 
 [node name="TopWall" type="RigidBody2D" parent="."]
+collision_layer = 2
 lock_rotation = true
 freeze = true
 
@@ -142,6 +145,7 @@ freeze = true
 shape = SubResource("RectangleShape2D_e0817")
 
 [node name="BottomWall" type="RigidBody2D" parent="."]
+collision_layer = 2
 lock_rotation = true
 freeze = true
 

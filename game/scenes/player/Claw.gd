@@ -44,6 +44,8 @@ func consume_pickup():
 	
 func grab_pickup(new_pickup : PickUp):
 	new_pickup.grab(player_owner)
+	if new_pickup.destroyOnGrab:
+		return
 	held_pickup.append(new_pickup)
 	held_pickup_parent = new_pickup.get_parent()
 	# todo: disable collision
