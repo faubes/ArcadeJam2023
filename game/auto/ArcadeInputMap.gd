@@ -3,6 +3,9 @@ extends Node
 var joypadDeviceIds : Array[int]
 var deviceMap : Dictionary
 
+var savedScores : Array[int]
+var savedPlayerIds : Array[int]
+
 var horizontal_axis_action := "horizontal_axis_%d"
 var vertical_axis_action := "vertical_axis_%d"
 var a_button_action := "a_button_%d"
@@ -105,3 +108,22 @@ func remove_input_map(id : int):
 	InputMap.erase_action(b_button_action % id)
 	InputMap.erase_action(x_button_action % id)
 	InputMap.erase_action(y_button_action % id)
+
+func compare_this_games_best_score(score : int, playerid : int):
+	var indexOfScoreTheNewScoreIsLargerThan = -1
+	for n in range(0, savedScores.size()):
+		if (score > savedScores[n]):
+			indexOfScoreTheNewScoreIsLargerThan = n
+		
+	if (indexOfScoreTheNewScoreIsLargerThan >= 0):
+		for n in range(savedScores.size()-2, indexOfScoreTheNewScoreIsLargerThan, -1):
+			savedScores[n+1] = savedScores[n]
+			savedPlayerIds[n+1] = savedPlayerIds[n]
+		
+	savedScores[indexOfScoreTheNewScoreIsLargerThan] = score
+	savedPlayerIds[indexOfScoreTheNewScoreIsLargerThan] = playerid
+
+#func saveScores():
+#	var save_dict = {
+#
+#	}
