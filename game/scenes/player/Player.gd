@@ -1,4 +1,5 @@
 extends StaticBody2D
+class_name Player
 
 @onready var groove_joint_2d = $GrooveJoint2D
 @onready var claw = $GrooveJoint2D/Claw
