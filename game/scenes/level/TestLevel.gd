@@ -39,8 +39,16 @@ func initPlayAreaRect():
 	var viewportSize = get_viewport_rect().size
 	var viewportAspect = viewportSize.x / viewportSize.y
 	
+	var lbA = get_node(letterboxA) as NinePatchRect
+	var lbB = get_node(letterboxB) as NinePatchRect
+	
+	lbA.visible = true
+	lbB.visible = true
+	
 	if (aspectRatio <= 0.0):
 		areaRect = Rect2(get_viewport_rect())
+		lbA.visible = false
+		lbB.visible = false
 	
 	elif (aspectRatio >= viewportAspect):
 		# Fit the width of the viewport + center vertically.
@@ -54,11 +62,9 @@ func initPlayAreaRect():
 		var emptyHeight = (viewportSize.y - areaHeight) * 0.5
 		areaRect = Rect2(viewportPosition.x, emptyHeight, areaWidth, areaHeight)
 		
-		var lbA = get_node(letterboxA) as NinePatchRect
 		lbA.position = Vector2.ZERO
 		lbA.size = Vector2(viewportSize.x, emptyHeight)
 		
-		var lbB = get_node(letterboxB) as NinePatchRect
 		lbB.position = Vector2(0.0, areaRect.position.y + areaRect.size.y)
 		lbB.size = Vector2(viewportSize.x, emptyHeight)
 
@@ -74,11 +80,9 @@ func initPlayAreaRect():
 		var emptyWidth = (viewportSize.x - areaWidth) * 0.5
 		areaRect = Rect2(emptyWidth, viewportPosition.y, areaWidth, areaHeight)
 		
-		var lbA = get_node(letterboxA) as NinePatchRect
 		lbA.position = Vector2.ZERO
 		lbA.size = Vector2(emptyWidth, viewportSize.y)
 		
-		var lbB = get_node(letterboxB) as NinePatchRect
 		lbB.position = Vector2(areaRect.position.x + areaRect.size.x, 0.0)
 		lbB.size = Vector2(emptyWidth, viewportSize.y)
 
