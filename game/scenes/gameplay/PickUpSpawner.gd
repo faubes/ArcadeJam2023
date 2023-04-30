@@ -75,7 +75,7 @@ func chooseNextPickUp():
 		if (spawnWeights[spawnIndex] > 0):
 			roll -= spawnWeights[spawnIndex]
 		
-		++spawnIndex
+		spawnIndex += 1
 	
 	if (spawnIndex < pickUps.size()):
 		return pickUps[spawnIndex]
