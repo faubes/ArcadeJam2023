@@ -27,8 +27,8 @@ var player_flip_sign = 1
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	setup_player_angle()
-	if player_id == 2 or player_id == 3:
-		player_flip_sign = -1
+#	if player_id == 2 or player_id == 3:
+#		player_flip_sign = -1
 	
 	claw.set_color(player_color)
 	claw.set_player(self)
@@ -45,7 +45,7 @@ func setup_player_angle():
 		1:
 			phase_angle = PI/2 - PI
 		2:
-			phase_angle = PI - PI
+			phase_angle = 0
 		3:
 			phase_angle = 3*PI/4 - PI
 
@@ -60,7 +60,10 @@ func set_arm_state(new_state : arm_state):
 func _physics_process(delta):
 	match current_arm_state:
 		arm_state.retracted:
-			claw.linear_velocity = Vector2.ZERO
+			if claw.global_position.distance_to(self.global_position) > groove_joint_2d.length * 0.1:
+				set_arm_state(arm_state.retracting)
+			else:
+				claw.linear_velocity = Vector2.ZERO
 		arm_state.extending:
 			if claw.global_position.distance_to(self.global_position) > groove_joint_2d.length * 0.9:
 				claw.linear_velocity = Vector2.ZERO

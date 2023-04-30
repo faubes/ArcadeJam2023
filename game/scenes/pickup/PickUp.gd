@@ -21,10 +21,10 @@ func _ready():
 	initShape()
 
 
-func _on_consumed(_playerObject):
+func _on_consumed(playerObject):
 	# Implement what happens when this power up is consumed.
 	for consumeBehaviour in consumeBehaviours:
-		consumeBehaviour.perform(self)
+		consumeBehaviour.perform(playerObject, self)
 	queue_free()
 
 
