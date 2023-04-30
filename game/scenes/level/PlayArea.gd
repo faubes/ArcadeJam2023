@@ -104,11 +104,13 @@ func placePlayers():
 		var p = get_node(playerTopLeft)
 		p.global_position = areaRect.position + Vector2(cornerOffset.x, cornerOffset.y)
 		p.phase_angle = 0 - PI/2
+		p.player_flip_sign = -1
 
 	if (playerTopRight != null):
 		var p = get_node(playerTopRight)
 		p.global_position = Vector2(areaRect.end.x, areaRect.position.y) + Vector2(-cornerOffset.x, cornerOffset.y)
 		p.phase_angle = 0
+		p.player_flip_sign = -1
 		
 	if (playerBottomLeft != null):
 		var p = get_node(playerBottomLeft)
