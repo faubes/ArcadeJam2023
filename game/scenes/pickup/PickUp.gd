@@ -25,8 +25,9 @@ func _ready():
 
 func initShape():
 	# Change the size of the collision shape according to the size setting.
-	initialSize = collisionShape.radius * 2
-	collisionShape.radius = size
+	var circleShape = collisionShape.shape as CircleShape2D
+	initialSize = circleShape.radius * 2
+	circleShape.radius = size
 	
 	var spriteScale = size / initialSize
 	sprite.scale = Vector2(spriteScale, spriteScale)
