@@ -2,6 +2,7 @@ extends CanvasLayer
 
 @onready var playerScoreTextList = [$"Player0/Player0 Ready", $"Player1/Player1 Ready", $"Player2/Player2 Ready", $"Player3/Player3 Ready"]
 @onready var playerNameTextList = [$Player0, $Player1, $Player2, $Player3]
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -19,9 +20,9 @@ func _process(_delta):
 		for i in range(0, playerScoreTextList.size()):
 			playerScoreTextList[i].text = str(GameCore.get_player_score(i)) + " points"
 			if GameCore.get_player_score(i) == bestScore:
-				playerScoreTextList[i].add_theme_color_override("font_color", Color.FOREST_GREEN)
+				playerScoreTextList[i].get_label_settings().set_font_color(Color.FOREST_GREEN)
 			else:
-				playerScoreTextList[i].add_theme_color_override("font_color", Color.RED)
+				playerScoreTextList[i].get_label_settings().set_font_color(Color.RED)
 
 func _input(event):
 	if !GameCore.inGame:
