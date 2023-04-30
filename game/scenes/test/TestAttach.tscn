@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6a0hh55ru8yv"]
+
+[ext_resource type="Script" path="res://scenes/test/TestAttach.gd" id="1_vfd7i"]
+[ext_resource type="Texture2D" uid="uid://dws57npm36v7t" path="res://icon.svg" id="2_8xhkt"]
+
+[node name="TestAttach" type="Node2D"]
+script = ExtResource("1_vfd7i")
+
+[node name="A" type="Node2D" parent="."]
+position = Vector2(215, 204)
+
+[node name="Icon" type="Sprite2D" parent="A"]
+position = Vector2(5, -3)
+texture = ExtResource("2_8xhkt")
+
+[node name="B" type="Node2D" parent="."]
+position = Vector2(562, 208)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
