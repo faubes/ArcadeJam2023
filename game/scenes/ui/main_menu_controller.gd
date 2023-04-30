@@ -25,8 +25,8 @@ func _ready():
 	ResetMenu()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+#func _process(delta):
+#	pass
 
 func _input(event):
 	if !MainMenu.is_visible() && !Credits.is_visible() && !HighScores.is_visible():
