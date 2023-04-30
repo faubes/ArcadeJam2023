@@ -12,18 +12,18 @@ func _ready():
 func _on_spawn_PickUp():
 	print("spawn")
 	var pickup : PickUp = pickup_scene.instantiate()
-	pickup.position = center + +150 * Vector2(randf(), randf())
+	pickup.position = center + +350 * Vector2(randf(), randf())
 	add_child(pickup)
 
 func _on_spawn_Large_PickUp():
 	print("spawn Large")
-	var pickup : PickUp = large_pickup_scene.instantiate()
-	pickup.position = center + +150 * Vector2(randf(), randf())
-	add_child(pickup)
+	#var pickup = large_pickup_scene.instantiate()
+	#pickup.position = center + +350 * Vector2(randf(), randf())
+	#add_child(pickup)
 
 func _on_spawn_num_PickUp(num : int):
 	print("spawn")
 	for i in range(num):
 		var pickup = pickup_scene.instantiate()
-		pickup.position = center + +50 * Vector2(randf(), randf())
+		pickup.position = center + +350 * Vector2(randf(), randf())
 		add_child(pickup)

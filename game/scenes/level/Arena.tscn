@@ -15,20 +15,35 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(1, 2.5, 3, 6.1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(7.9, 10.9, 11.7, 16.7, 25.3, 40.3, 97, 127.1, 183.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "values": [{
+"args": [18],
+"method": &"_on_spawn_num_PickUp"
+}, {
+"args": [],
+"method": &"_on_spawn_Large_PickUp"
+}, {
 "args": [],
 "method": &"_on_spawn_PickUp"
 }, {
-"args": [0, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+"args": [7],
 "method": &"_on_spawn_num_PickUp"
 }, {
 "args": [],
 "method": &"_on_spawn_PickUp"
 }, {
-"args": [],
-"method": &"_on_spawn_PickUp"
+"args": [15],
+"method": &"_on_spawn_num_PickUp"
+}, {
+"args": [35],
+"method": &"_on_spawn_num_PickUp"
+}, {
+"args": [50],
+"method": &"_on_spawn_num_PickUp"
+}, {
+"args": [18],
+"method": &"_on_spawn_num_PickUp"
 }]
 }
 
