@@ -1,6 +1,6 @@
 extends HBoxContainer
 
-@export var log_unhandled_inputs = true
+@export var log_unhandled_inputs = false
 @export var device_id : int
 
 @onready var texture_rect = $MarginContainer/TextureRect

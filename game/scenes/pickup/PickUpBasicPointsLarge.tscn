@@ -5,6 +5,7 @@
 [node name="Root" instance=ExtResource("1_sa20o")]
 
 [node name="PickUp" parent="." index="0"]
+mass = 3
 pointValue = 50
 size = 30
 mass = 3

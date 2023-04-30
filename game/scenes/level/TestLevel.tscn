@@ -1,103 +1,37 @@
-[gd_scene load_steps=8 format=3 uid="uid://juymhj4t7nlh"]
+[gd_scene load_steps=3 format=3 uid="uid://juymhj4t7nlh"]
 
 [ext_resource type="PackedScene" uid="uid://dte16d778t1xn" path="res://scenes/player/Player.tscn" id="1_4iu7c"]
-[ext_resource type="Script" path="res://scenes/level/TestLevel.gd" id="1_snmcu"]
-[ext_resource type="Texture2D" uid="uid://q83lmjb4jm0q" path="res://assets/letterbox_bg.svg" id="3_0nib7"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q3152"]
-size = Vector2(50, 650)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_w47il"]
-size = Vector2(50, 650)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fmvaj"]
-size = Vector2(1152, 50)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tvq13"]
-size = Vector2(1152, 50)
+[ext_resource type="Material" uid="uid://dbaq0xu8p1wo4" path="res://assets/shaders/pixelate_shader_material.tres" id="2_r0kbn"]
 
 [node name="TestLevel" type="Node2D"]
-script = ExtResource("1_snmcu")
-aspectRatio = 1.0
-cornerOffset = Vector2(100, 100)
-playerTopLeft = NodePath("Player2")
-playerTopRight = NodePath("Player3")
-playerBottomLeft = NodePath("Player0")
-playerBottomRight = NodePath("Player1")
-leftWall = NodePath("LeftWall/LeftWallCollider")
-rightWall = NodePath("RightWall/RightWallCollider")
-topWall = NodePath("TopWall/TopWallCollider")
-bottomWall = NodePath("BottomWall/BottomWallCollider")
-letterboxA = NodePath("LetterboxA")
-letterboxB = NodePath("LetterboxB")
 
 [node name="Player0" parent="." instance=ExtResource("1_4iu7c")]
-position = Vector2(140, 520)
-rotation = -1.06122
+position = Vector2(33, 608)
+rotation = 3.14159
+player_color = Color(1, 0, 0, 1)
 
 [node name="Player1" parent="." instance=ExtResource("1_4iu7c")]
-position = Vector2(996, 538)
-rotation = -1.06122
+position = Vector2(1084, 593)
 player_id = 1
+player_color = Color(0, 1, 0, 1)
 
 [node name="Player2" parent="." instance=ExtResource("1_4iu7c")]
-position = Vector2(135, 101)
-rotation = -1.06122
+position = Vector2(48, 49)
 player_id = 2
+player_color = Color(0, 0, 1, 1)
 
 [node name="Player3" parent="." instance=ExtResource("1_4iu7c")]
-position = Vector2(1003, 128)
-rotation = -1.06069
+position = Vector2(1094, 48)
 player_id = 3
+player_color = Color(0.827451, 0, 0.415686, 1)
 
-[node name="LeftWall" type="RigidBody2D" parent="."]
-gravity_scale = 0.0
-lock_rotation = true
-freeze = true
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="LeftWallCollider" type="CollisionShape2D" parent="LeftWall"]
-position = Vector2(-25, 325)
-shape = SubResource("RectangleShape2D_q3152")
-
-[node name="RightWall" type="RigidBody2D" parent="."]
-gravity_scale = 0.0
-lock_rotation = true
-freeze = true
-
-[node name="RightWallCollider" type="CollisionShape2D" parent="RightWall"]
-position = Vector2(1177, 325)
-shape = SubResource("RectangleShape2D_w47il")
-
-[node name="TopWall" type="RigidBody2D" parent="."]
-gravity_scale = 0.0
-lock_rotation = true
-freeze = true
-
-[node name="TopWallCollider" type="CollisionShape2D" parent="TopWall"]
-position = Vector2(575, -25)
-shape = SubResource("RectangleShape2D_fmvaj")
-
-[node name="BottomWall" type="RigidBody2D" parent="."]
-gravity_scale = 0.0
-lock_rotation = true
-freeze = true
-
-[node name="BottomWallCollider" type="CollisionShape2D" parent="BottomWall"]
-position = Vector2(575, 675)
-shape = SubResource("RectangleShape2D_tvq13")
-
-[node name="LetterboxA" type="NinePatchRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("3_0nib7")
-patch_margin_left = 20
-patch_margin_top = 20
-patch_margin_right = 20
-patch_margin_bottom = 20
-
-[node name="LetterboxB" type="NinePatchRect" parent="."]
-offset_left = 281.0
-offset_top = 81.0
-offset_right = 907.0
-offset_bottom = 485.0
-texture = ExtResource("3_0nib7")
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = ExtResource("2_r0kbn")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(28.796, 16.1772)
