@@ -11,6 +11,7 @@ var player_owner : Player
 var is_closing : bool = false
 var held_pickup : Array[PickUp]
 var held_pickup_parent : Node = null
+var debug : bool = false
 
 func set_player(new_player : Player):
 	player_owner = new_player
@@ -98,5 +99,5 @@ func _on_open_start():
 
 
 func _process(_delta):
-	if player_owner.played_id == 0 and is_holding_pickup():
+	if debug and player_owner.player_id == 0 and is_holding_pickup():
 		print(self.position)
