@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bquuoe4vjyjok"]
+
+[ext_resource type="PackedScene" uid="uid://dyu7s1jrvo5w7" path="res://scenes/pickup/PickUp.tscn" id="1_semdr"]
+
+[node name="RigidBody2D" instance=ExtResource("1_semdr")]
