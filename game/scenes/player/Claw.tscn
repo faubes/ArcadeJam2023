@@ -110,7 +110,7 @@ tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(-40, 21)]
 }
 tracks/9/type = "method"
 tracks/9/imported = false
@@ -133,7 +133,7 @@ tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [-0.503416]
+"values": [0.0895923]
 }
 
 [sub_resource type="Animation" id="Animation_q76ff"]
@@ -254,7 +254,8 @@ lock_rotation = true
 script = ExtResource("1_ovkym")
 
 [node name="ClawCollisionShape" type="CollisionPolygon2D" parent="."]
-rotation = -0.503416
+position = Vector2(-40, 21)
+rotation = 0.0895923
 polygon = PackedVector2Array(10, -11, 2, -24, 6, -41, 15, -47, 18, -61, 26, -50, 34, -51, 43, -63, 47, -50, 57, -48, 67, -53, 66, -44, 71, -42, 77.0348, -45.1845, 76, -39, 82, -31, 82, -19, 78, -6, 69, -18, 58, -25, 39, -25, 24, -20)
 
 [node name="BigClaw" type="Polygon2D" parent="."]
