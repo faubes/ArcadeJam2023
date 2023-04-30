@@ -103,18 +103,22 @@ func placePlayers():
 	if (playerTopLeft != null):
 		var p = get_node(playerTopLeft)
 		p.global_position = areaRect.position + Vector2(cornerOffset.x, cornerOffset.y)
+		p.phase_angle = 0 - PI/2
 
 	if (playerTopRight != null):
 		var p = get_node(playerTopRight)
 		p.global_position = Vector2(areaRect.end.x, areaRect.position.y) + Vector2(-cornerOffset.x, cornerOffset.y)
-
+		p.phase_angle = 0
+		
 	if (playerBottomLeft != null):
 		var p = get_node(playerBottomLeft)
 		p.global_position = Vector2(areaRect.position.x, areaRect.end.y) + Vector2(cornerOffset.x, -cornerOffset.y)
+		p.phase_angle = -PI
 
 	if (playerBottomRight != null):
 		var p = get_node(playerBottomRight)
 		p.global_position = areaRect.end + Vector2(-cornerOffset.x, -cornerOffset.y)
+		p.phase_angle = - PI - PI /2
 
 func placeWalls():
 	var wallThickness = 50 

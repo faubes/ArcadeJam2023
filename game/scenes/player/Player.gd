@@ -26,10 +26,6 @@ var player_flip_sign = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	setup_player_angle()
-#	if player_id == 2 or player_id == 3:
-#		player_flip_sign = -1
-	
 	claw.set_color(player_color)
 	claw.set_player(self)
 	#claw.global_position = self.global_position + min_range * Vector2.RIGHT
@@ -37,19 +33,6 @@ func _ready():
 		.format({"player" : player_id, "angle" : phase_angle, "end_angle" : phase_angle + PI/2}))
 	target_angle = phase_angle + PI/4
 	rotation = target_angle
-	
-	
-func setup_player_angle():
-	match(player_id):
-		0:
-			phase_angle = - PI
-		1:
-			phase_angle = PI/2 - PI
-		2:
-			phase_angle = 0
-		3:
-			phase_angle = 3*PI/4 - PI
-
 
 func set_arm_state(new_state : arm_state):
 	if current_arm_state == new_state:
