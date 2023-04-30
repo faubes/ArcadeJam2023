@@ -6,7 +6,7 @@
 resource_local_to_scene = true
 radius = 128.0
 
-[node name="RigidBody2D" instance=ExtResource("1_semdr")]
+[node name="PickUpPoints" instance=ExtResource("1_semdr")]
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_gf0yq")

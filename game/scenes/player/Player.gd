@@ -24,7 +24,7 @@ var current_rotation_input : float = 0
 var target_angle : float
 var player_flip_sign = 1
 
-var debug : bool = false
+var debug : bool = true
 
 
 # Called when the node enters the scene tree for the first time.
