@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dbaq0xu8p1wo4"]
+
+[ext_resource type="Shader" path="res://assets/shaders/pixellate_shader.gdshader" id="1_y067s"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_y067s")

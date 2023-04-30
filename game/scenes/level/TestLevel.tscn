@@ -1,24 +1,37 @@
-[gd_scene load_steps=2 format=3 uid="uid://juymhj4t7nlh"]
+[gd_scene load_steps=3 format=3 uid="uid://juymhj4t7nlh"]
 
 [ext_resource type="PackedScene" uid="uid://dte16d778t1xn" path="res://scenes/player/Player.tscn" id="1_4iu7c"]
+[ext_resource type="Material" uid="uid://dbaq0xu8p1wo4" path="res://assets/shaders/pixelate_shader_material.tres" id="2_r0kbn"]
 
 [node name="TestLevel" type="Node2D"]
 
 [node name="Player0" parent="." instance=ExtResource("1_4iu7c")]
-position = Vector2(141, 520)
-rotation = -1.06122
+position = Vector2(33, 608)
+rotation = 3.14159
+player_color = Color(1, 0, 0, 1)
 
 [node name="Player1" parent="." instance=ExtResource("1_4iu7c")]
-position = Vector2(996, 538)
-rotation = -1.06122
+position = Vector2(1084, 593)
 player_id = 1
+player_color = Color(0, 1, 0, 1)
 
 [node name="Player2" parent="." instance=ExtResource("1_4iu7c")]
-position = Vector2(135, 101)
-rotation = -1.06122
+position = Vector2(48, 49)
 player_id = 2
+player_color = Color(0, 0, 1, 1)
 
 [node name="Player3" parent="." instance=ExtResource("1_4iu7c")]
-position = Vector2(1003, 128)
-rotation = -1.06069
+position = Vector2(1094, 48)
 player_id = 3
+player_color = Color(0.827451, 0, 0.415686, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = ExtResource("2_r0kbn")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(28.796, 16.1772)

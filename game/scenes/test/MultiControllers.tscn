@@ -1,8 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvdxrhqgjob5q"]
+[gd_scene load_steps=2 format=3 uid="uid://bibx55ihhqyln"]
 
 [ext_resource type="PackedScene" uid="uid://c6pmtx61qbv1v" path="res://scenes/ui/JoystickDebug.tscn" id="1_3wdwb"]
-[ext_resource type="PackedScene" uid="uid://lp4cu1vsx6yr" path="res://scenes/test/main_menu_button_container.tscn" id="2_njb4w"]
-[ext_resource type="PackedScene" uid="uid://juymhj4t7nlh" path="res://scenes/level/TestLevel.tscn" id="3_efqb3"]
 
 [node name="MultiControllers" type="Node2D"]
 
@@ -58,7 +56,3 @@ offset_left = -40.0
 offset_right = 0.0
 grow_horizontal = 0
 device_id = 3
-
-[node name="Main Menu Button Container" parent="." instance=ExtResource("2_njb4w")]
-
-[node name="TestLevel" parent="." instance=ExtResource("3_efqb3")]
