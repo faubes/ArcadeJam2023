@@ -10,11 +10,11 @@ class_name Player
 
 @export var player_id : int = 0
 @export var player_color : Color
+@export var phase_angle : float
 
 enum hand_state { closed, open }
 enum arm_state { retracted, extending, retracting }
 
-@onready var phase_angle : float = player_id * PI/2 + PI
 
 var current_hand_state : hand_state = hand_state.closed
 var current_arm_state : arm_state = arm_state.retracted
@@ -26,6 +26,7 @@ var player_flip_sign = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	setup_player_angle()
 	if player_id == 2 or player_id == 3:
 		player_flip_sign = -1
 	
@@ -35,6 +36,18 @@ func _ready():
 	target_angle = phase_angle
 	rotation = target_angle
 	
+	
+func setup_player_angle():
+	match(player_id):
+		0:
+			phase_angle = - PI
+		1:
+			phase_angle = PI/2 - PI
+		2:
+			phase_angle = PI - PI
+		3:
+			phase_angle = 3*PI/4 - PI
+
 
 func set_arm_state(new_state : arm_state):
 	if current_arm_state == new_state:
