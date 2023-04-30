@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://q5bjny8mw82f"]
+[gd_scene load_steps=13 format=3 uid="uid://q5bjny8mw82f"]
 
 [ext_resource type="Script" path="res://scenes/level/Arena.gd" id="1_4ycsb"]
 [ext_resource type="PackedScene" uid="uid://dte16d778t1xn" path="res://scenes/player/Player.tscn" id="1_wd7dh"]
 [ext_resource type="Material" uid="uid://dbaq0xu8p1wo4" path="res://assets/shaders/pixelate_shader_material.tres" id="2_3mkm2"]
+[ext_resource type="Script" path="res://scenes/level/PlayArea.gd" id="2_6dix0"]
 [ext_resource type="PackedScene" uid="uid://dyu7s1jrvo5w7" path="res://scenes/pickup/PickUp.tscn" id="3_sgybq"]
+[ext_resource type="Texture2D" uid="uid://q83lmjb4jm0q" path="res://assets/letterbox_bg.svg" id="6_h741i"]
 
 [sub_resource type="Animation" id="Animation_p6gea"]
 resource_name = "level1"
@@ -52,8 +54,31 @@ _data = {
 "level1": SubResource("Animation_p6gea")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ec6ix"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f0fp4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e0817"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h3ln6"]
+
 [node name="Arena" type="Node2D"]
 script = ExtResource("1_4ycsb")
+
+[node name="PlayArea" type="Node2D" parent="."]
+script = ExtResource("2_6dix0")
+aspectRatio = 1.0
+cornerOffset = Vector2(33, 33)
+playerTopLeft = NodePath("../Player2")
+playerTopRight = NodePath("../Player3")
+playerBottomLeft = NodePath("../Player0")
+playerBottomRight = NodePath("../Player1")
+leftWall = NodePath("../LeftWall/LeftWallCollider")
+rightWall = NodePath("../RightWall/RightWallCollider")
+topWall = NodePath("../TopWall/TopWallCollider")
+bottomWall = NodePath("../BottomWall/BottomWallCollider")
+letterboxA = NodePath("../LetterboxA")
+letterboxB = NodePath("../LetterboxB")
 
 [node name="Player0" parent="." instance=ExtResource("1_wd7dh")]
 position = Vector2(33, 608)
@@ -93,3 +118,33 @@ position = Vector2(511, 370)
 libraries = {
 "": SubResource("AnimationLibrary_vec71")
 }
+
+[node name="LeftWall" type="RigidBody2D" parent="."]
+
+[node name="LeftWallCollider" type="CollisionShape2D" parent="LeftWall"]
+shape = SubResource("RectangleShape2D_ec6ix")
+
+[node name="RightWall" type="RigidBody2D" parent="."]
+
+[node name="RightWallCollider" type="CollisionShape2D" parent="RightWall"]
+shape = SubResource("RectangleShape2D_f0fp4")
+
+[node name="TopWall" type="RigidBody2D" parent="."]
+
+[node name="TopWallCollider" type="CollisionShape2D" parent="TopWall"]
+shape = SubResource("RectangleShape2D_e0817")
+
+[node name="BottomWall" type="RigidBody2D" parent="."]
+
+[node name="BottomWallCollider" type="CollisionShape2D" parent="BottomWall"]
+shape = SubResource("RectangleShape2D_h3ln6")
+
+[node name="LetterboxA" type="NinePatchRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("6_h741i")
+
+[node name="LetterboxB" type="NinePatchRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("6_h741i")

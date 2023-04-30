@@ -1,4 +1,5 @@
 extends Node2D
+class_name PlayArea
 
 @export var aspectRatio : float = 0.0
 @export var cornerOffset = Vector2(0.0, 0.0)
