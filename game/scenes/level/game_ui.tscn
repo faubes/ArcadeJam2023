@@ -1,7 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6vfrkaxqqn1t"]
+[gd_scene load_steps=7 format=3 uid="uid://b6vfrkaxqqn1t"]
 
 [ext_resource type="Script" path="res://scenes/level/game_ui.gd" id="1_py7ry"]
 [ext_resource type="FontFile" uid="uid://dogrj61isaepv" path="res://assets/fonts/Minimal5x5Monospaced.ttf" id="2_mjp4j"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3j4ec"]
+font = ExtResource("2_mjp4j")
+font_size = 30
+font_color = Color(0.87, 0.0696, 0.0696, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nqiac"]
+font = ExtResource("2_mjp4j")
+font_size = 30
+font_color = Color(0.0696, 0.87, 0.08294, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_kv12s"]
 font = ExtResource("2_mjp4j")
@@ -14,6 +24,40 @@ font_color = Color(0.87, 0.0696, 0.0696, 1)
 
 [node name="GameUI" type="CanvasLayer"]
 script = ExtResource("1_py7ry")
+
+[node name="RedLabel" type="Label" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 330.5
+offset_top = -281.0
+offset_right = 551.5
+offset_bottom = -209.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "100 points"
+label_settings = SubResource("LabelSettings_3j4ec")
+horizontal_alignment = 2
+
+[node name="GreenLabel" type="Label" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 330.5
+offset_top = -281.0
+offset_right = 551.5
+offset_bottom = -209.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "100 points"
+label_settings = SubResource("LabelSettings_nqiac")
+horizontal_alignment = 2
 
 [node name="Player0" type="Label" parent="."]
 anchors_preset = 2
