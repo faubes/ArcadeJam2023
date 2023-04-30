@@ -14,14 +14,9 @@ $"Main Menu/Player Ready Container/Player2/Player2 Ready",
 $"Main Menu/Player Ready Container/Player3/Player3 Ready"]
 @onready var MainTitle = $"Main Menu/Title"
 @onready var CreditsTitle = $"Credits/Title"
-@onready var GameNameList = ["Snip It Up", "Snip, Snip, MotherCrabbers", "Gimme Gimme", "Grabby Crabby", "Claw of the Jungle", "Lay Down The Claw", "Fight Claw", "Fight Clawb"]
+@onready var GameNameList = ["Snip It Up", "Snip Snip", "Gimme Gimme", "Grabby Crabby", "Claw of the Jungle", "Lay Down The Claw", "Fight Claw", "Fight Clawb"]
 
 @onready var PlayerNameObjects = [$"Main Menu/Player Ready Container/Player0", $"Main Menu/Player Ready Container/Player1", $"Main Menu/Player Ready Container/Player2", $"Main Menu/Player Ready Container/Player3"]
-enum NameType {NONAME, PACMAN, SISPROJECTS}
-@onready var PlayerNameType : NameType = NameType.NONAME
-@onready var NoNames = ["Player0", "Player1", "Player2", "Player3"]
-@onready var PacmanNames = ["Blinky", "Pinky", "Inky", "Clyde"]
-@onready var SISNames = ["SierraDelta", "Parkside", "Chlorine", "Burgerman"]
 @onready var high_score_list = $"High Scores/HighScoreList"
 @onready var prefixList = ["1st: ", "2nd: ", "3rd: ", "4th: ", "5th: ", "6th: ", "7th: ", "8th: ", "9th: ", "10th: "]
 
@@ -88,6 +83,7 @@ func ResetMenu():
 	# Reset ready players
 	ReadyList = [false, false, false, false]
 	ShowReadyIndicators()
+	ShowPlayerNames()
 
 func ShowReadyIndicators():
 	for i in range(0, ReadyList.size()):
@@ -103,18 +99,13 @@ func StartGame():
 	GameCore.inGame = true
 	
 func TogglePlayerNames():
-	if (PlayerNameType == NameType.NONAME):
-		PlayerNameType = NameType.PACMAN
-		for i in range(0, PlayerNameObjects.size()):
-			PlayerNameObjects[i].text = PacmanNames[i]
-	elif (PlayerNameType == NameType.PACMAN):
-		PlayerNameType = NameType.SISPROJECTS
-		for i in range(0, PlayerNameObjects.size()):
-			PlayerNameObjects[i].text = SISNames[i]
-	elif (PlayerNameType == NameType.SISPROJECTS):
-		PlayerNameType = NameType.NONAME
-		for i in range(0, PlayerNameObjects.size()):
-			PlayerNameObjects[i].text = NoNames[i]
+	GameCore.TogglePlayerNames()
+	ShowPlayerNames()
+	
+func ShowPlayerNames():
+	var listOfNames = GameCore.GetPlayerNames()
+	for i in range(0, PlayerNameObjects.size()):
+		PlayerNameObjects[i].text = listOfNames[i]
 
 func SetHighScores():
 	# bestScoreArray is authoritative while the game is running.

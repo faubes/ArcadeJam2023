@@ -5,6 +5,12 @@ var playerScores : Dictionary = {}
 
 var bestScoreArray : Array = [100, 90, 80, 70, 60, 50, 40, 30, 20, 10]
 
+enum NameType {NONAME, PACMAN, SISPROJECTS}
+var PlayerNameType : NameType = NameType.NONAME
+var NoNames = ["Player0", "Player1", "Player2", "Player3"]
+var PacmanNames = ["Blinky", "Pinky", "Inky", "Clyde"]
+var SISNames = ["SierraDelta", "Parkside", "Chlorine", "Burgerman"]
+
 var inGame : bool = false
 
 signal onPickUpConsumed(player, pickUp)
@@ -15,6 +21,7 @@ func _ready():
 	# Initialize randomization
 	randomize()
 	load_game()
+	PlayerNameType = NameType.NONAME
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -33,10 +40,7 @@ func get_player_score(playerId : int):
 
 #func GoToMainMenu():
 func check_best_score():
-	var bestscore = 0
-	for scores in playerScores:
-		if (playerScores[scores] > bestscore):
-			bestscore = playerScores[scores]
+	var bestscore = FindCurrentBestScore()
 	
 	var index = -1
 	for i in range(0, bestScoreArray.size()):
@@ -51,6 +55,12 @@ func check_best_score():
 		bestScoreArray[index] = bestscore
 		save_game()
 	
+func FindCurrentBestScore():
+	var bestscore = 0
+	for scores in playerScores:
+		if (playerScores[scores] > bestscore):
+			bestscore = playerScores[scores]
+	return bestscore
 
 func save_game():
 	var save_game = FileAccess.open("res://savegame.save", FileAccess.WRITE)
@@ -84,3 +94,19 @@ func load_game():
 		
 	bestScoreArray = json.data
 	pass
+
+func TogglePlayerNames():
+	if (GameCore.PlayerNameType == NameType.NONAME):
+		PlayerNameType = NameType.PACMAN
+	elif (PlayerNameType == NameType.PACMAN):
+		PlayerNameType = NameType.SISPROJECTS
+	elif (PlayerNameType == NameType.SISPROJECTS):
+		PlayerNameType = NameType.NONAME
+
+func GetPlayerNames():
+	if (GameCore.PlayerNameType == NameType.NONAME):
+		return NoNames
+	elif (PlayerNameType == NameType.PACMAN):
+		return PacmanNames
+	elif (PlayerNameType == NameType.SISPROJECTS):
+		return SISNames
