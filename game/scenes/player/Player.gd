@@ -87,6 +87,9 @@ func _physics_process(delta):
 
 
 func _input(event):
+	if !GameCore.inGame:
+		return
+	
 	if event.device != player_id:
 		return
 	

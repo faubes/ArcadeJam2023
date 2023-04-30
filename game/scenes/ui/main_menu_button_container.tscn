@@ -213,7 +213,21 @@ offset_top = 50.0
 offset_right = 181.5
 offset_bottom = 181.0
 grow_horizontal = 2
-text = "GAME NAME was made claw-sible by:"
+text = "GAME NAME"
+label_settings = SubResource("LabelSettings_wakki")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Title2" type="Label" parent="Credits"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -348.0
+offset_top = 136.0
+offset_right = 364.0
+offset_bottom = 267.0
+grow_horizontal = 2
+text = " was made claw-sible by:"
 label_settings = SubResource("LabelSettings_wakki")
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -222,10 +236,10 @@ metadata/_edit_use_anchors_ = true
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -598.0
-offset_top = 209.0
-offset_right = 583.0
-offset_bottom = 467.0
+offset_left = -595.0
+offset_top = 265.0
+offset_right = 586.0
+offset_bottom = 523.0
 grow_horizontal = 2
 text = "LEAD CLAWGRAMMER: Joel Faubert
 LEAD PROGRABBER: Eric Dalrymple

@@ -12,8 +12,16 @@ enum SelectedMainMenuOption { PLAY_GAME, HIGH_SCORES, CREDITS}
 $"Main Menu/Player Ready Container/Player1/Player1 Ready",
 $"Main Menu/Player Ready Container/Player2/Player2 Ready",
 $"Main Menu/Player Ready Container/Player3/Player3 Ready"]
+@onready var MainTitle = $"Main Menu/Title"
+@onready var CreditsTitle = $"Credits/Title"
+@onready var GameNameList = ["Snip It Up", "Snip, Snip, MotherCrabbers", "Gimme Gimme", "Grabby Crabby", "Claw of the Jungle", "Lay Down The Claw", "Fight Claw", "Fight Clawb"]
 
-
+@onready var PlayerNameObjects = [$"Main Menu/Player Ready Container/Player0", $"Main Menu/Player Ready Container/Player1", $"Main Menu/Player Ready Container/Player2", $"Main Menu/Player Ready Container/Player3"]
+enum NameType {NONAME, PACMAN, SISPROJECTS}
+@onready var PlayerNameType : NameType = NameType.NONAME
+@onready var NoNames = ["Player0", "Player1", "Player2", "Player3"]
+@onready var PacmanNames = ["Blinky", "Pinky", "Inky", "Clyde"]
+@onready var SISNames = ["SierraDelta", "Parkside", "Chlorine", "Burgerman"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -27,12 +35,15 @@ func _input(event):
 	if !MainMenu.is_visible() && !Credits.is_visible() && !HighScores.is_visible():
 		return
 		
+	if GameCore.inGame:
+		return
+		
 	#Menu Inputs
 	if event.is_action_pressed("MenuUp") && MainMenu.is_visible():
 		NavigateMenu(true)
 	if event.is_action_pressed("MenuDown") && MainMenu.is_visible():
 		NavigateMenu(false)
-	if event.is_action_pressed("SelectButton") && MainMenu.is_visible():
+	if event.is_action_released("SelectButton") && MainMenu.is_visible():
 		if SelectedOption == SelectedMainMenuOption.PLAY_GAME:
 			StartGame()
 		elif SelectedOption == SelectedMainMenuOption.HIGH_SCORES:
@@ -41,11 +52,13 @@ func _input(event):
 		elif SelectedOption == SelectedMainMenuOption.CREDITS:
 			MainMenu.set_visible(false)
 			Credits.set_visible(true)
-	if event.is_action_pressed("ReadyPlayer"):
+	if event.is_action_released("ReadyPlayer"):
 		if MainMenu.is_visible():
 			ToggleReadyIndicator(event.device)
 		else:
 			ResetMenu()
+	if event.is_action_released("TogglePlayerNames"):
+		TogglePlayerNames()
 
 func NavigateMenu(up: bool):
 	if (up && SelectedOption != SelectedMainMenuOption.PLAY_GAME):
@@ -57,6 +70,13 @@ func NavigateMenu(up: bool):
 	
 func ResetMenu():
 	SelectedOption = SelectedMainMenuOption.PLAY_GAME
+	GameCore.inGame = false
+	
+	# Set various game names
+	randomize()
+	var index = randi_range(0, GameNameList.size()-1)
+	MainTitle.text = GameNameList[index]
+	CreditsTitle.text = GameNameList[index]
 	#Set initial button position.
 	NavigateMenu(true)
 	MainMenu.set_visible(true)
@@ -77,54 +97,18 @@ func ToggleReadyIndicator(playerId : int):
 func StartGame():
 	$"Main Menu".set_visible(false)
 	#Some event up to Game Manager to pass along the ready player list.
-
-func save_game():
-	var save_game = FileAccess.open("res://savegame.save", FileAccess.WRITE)
-
-
-		# JSON provides a static method to serialized JSON string.
-		#var json_string = JSON.stringify(node_data)
-
-		# Store the save dictionary as a new line in the save file.
-		#save_game.store_line(json_string)
-
-#func load_game():
-#    if not FileAccess.file_exists("user://savegame.save"):
-#        return # Error! We don't have a save to load.
-#
-#    # We need to revert the game state so we're not cloning objects
-#    # during loading. This will vary wildly depending on the needs of a
-#    # project, so take care with this step.
-#    # For our example, we will accomplish this by deleting saveable objects.
-#    var save_nodes = get_tree().get_nodes_in_group("Persist")
-#    for i in save_nodes:
-#        i.queue_free()
-#
-#    # Load the file line by line and process that dictionary to restore
-#    # the object it represents.
-#    var save_game = FileAccess.open("user://savegame.save", FileAccess.READ)
-#    while save_game.get_position() < save_game.get_length():
-#        var json_string = save_game.get_line()
-#
-#        # Creates the helper class to interact with JSON
-#        var json = JSON.new()
-#
-#        # Check if there is any error while parsing the JSON string, skip in case of failure
-#        var parse_result = json.parse(json_string)
-#        if not parse_result == OK:
-#            print("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
-#            continue
-#
-#        # Get the data from the JSON object
-#        var node_data = json.get_data()
-#
-#        # Firstly, we need to create the object and add it to the tree and set its position.
-#        var new_object = load(node_data["filename"]).instantiate()
-#        get_node(node_data["parent"]).add_child(new_object)
-#        new_object.position = Vector2(node_data["pos_x"], node_data["pos_y"])
-#
-#        # Now we set the remaining variables.
-#        for i in node_data.keys():
-#            if i == "filename" or i == "parent" or i == "pos_x" or i == "pos_y":
-#                continue
-#            new_object.set(i, node_data[i])
+	GameCore.inGame = true
+	
+func TogglePlayerNames():
+	if (PlayerNameType == NameType.NONAME):
+		PlayerNameType = NameType.PACMAN
+		for i in range(0, PlayerNameObjects.size()):
+			PlayerNameObjects[i].text = PacmanNames[i]
+	elif (PlayerNameType == NameType.PACMAN):
+		PlayerNameType = NameType.SISPROJECTS
+		for i in range(0, PlayerNameObjects.size()):
+			PlayerNameObjects[i].text = SISNames[i]
+	elif (PlayerNameType == NameType.SISPROJECTS):
+		PlayerNameType = NameType.NONAME
+		for i in range(0, PlayerNameObjects.size()):
+			PlayerNameObjects[i].text = NoNames[i]
