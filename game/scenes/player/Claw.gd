@@ -38,6 +38,7 @@ func is_holding_pickup():
 	return not held_pickup.is_empty()
 
 func consume_pickup():
+	print("Consume!")
 	for item in held_pickup:
 		item.consume(player_owner)
 	held_pickup = []
@@ -48,17 +49,17 @@ func grab_pickup(new_pickup : PickUp):
 		return
 	held_pickup.append(new_pickup)
 	held_pickup_parent = new_pickup.get_parent()
-	# todo: disable collision
+	new_pickup.position = Vector2.ZERO
+	new_pickup.call_deferred("setCollisionEnabled", false)
 	new_pickup.call_deferred("reparent", self, false)
 	
 func drop_pickup():
 	if held_pickup.is_empty():
 		print("Unexpected: drop pickup without pickup?")
 		return
-	# todo: enable collision
 	for item in held_pickup:
-		#item.global_position = self.global_position
-		item.call_deferred("reparent", held_pickup_parent, false)
+		item.call_deferred("setCollisionEnabled", true)
+		item.call_deferred("reparent", held_pickup_parent, true)
 	held_pickup = []
 	held_pickup_parent = null
 
@@ -94,3 +95,8 @@ func _on_open_start():
 	if is_closing:
 		#print("done closing")
 		is_closing = false
+
+
+func _process(_delta):
+	if player_owner.played_id == 0 and is_holding_pickup():
+		print(self.position)
