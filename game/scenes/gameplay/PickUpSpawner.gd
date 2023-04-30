@@ -17,7 +17,6 @@ var spawnedPickUps : Array[Node] = []
 func _ready():
 	# Listen for node destructions
 	
-	
 	# Cache the play area
 	if (playAreaPath != null):
 		playArea = get_node(playAreaPath) as PlayArea
@@ -38,6 +37,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	# Clear destroyed spawns
+	
+	
 	# Early out if there's nothing to spawn
 	if (pickUps == null || pickUps.size() == 0 || spawnWeightTotal == 0):
 		return
@@ -62,6 +64,9 @@ func spawnNext():
 	var newPickUp = nextPickup.instantiate() as Node2D;
 	newPickUp.position = spawnPosition
 	add_child(newPickUp)
+	spawnedPickUps.append(newPickUp)
+	
+	print("Spawned pick-up: " + newPickUp.name)
 
 func chooseNextPickUp():
 	if (spawnWeightTotal == 0):

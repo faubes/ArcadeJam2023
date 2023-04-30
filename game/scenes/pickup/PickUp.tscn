@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://becdn28o1fxr6" path="res://assets/pickup.svg" id="2_w05q6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5bf33"]
+resource_local_to_scene = true
 radius = 128.0
 
 [node name="PickUp" type="RigidBody2D"]

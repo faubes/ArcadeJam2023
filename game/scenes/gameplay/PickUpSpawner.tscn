@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://cem5xffh581gb"]
+[gd_scene load_steps=5 format=3 uid="uid://cem5xffh581gb"]
 
 [ext_resource type="Script" path="res://scenes/gameplay/PickUpSpawner.gd" id="1_gi82d"]
+[ext_resource type="PackedScene" uid="uid://dl415u1p8p362" path="res://scenes/pickup/PickUpPointsHaulLarge.tscn" id="2_a7ras"]
+[ext_resource type="PackedScene" uid="uid://dnsymhxjowowj" path="res://scenes/pickup/PickUpPointsHaulMedium.tscn" id="3_lauh8"]
+[ext_resource type="PackedScene" uid="uid://dff2ac1k3sqxe" path="res://scenes/pickup/PickUpPointsHaulSmall.tscn" id="4_182u2"]
 
 [node name="PickUpSpawner" type="Node"]
 script = ExtResource("1_gi82d")
+pickUps = Array[PackedScene]([ExtResource("2_a7ras"), ExtResource("3_lauh8"), ExtResource("4_182u2")])
+spawnWeights = Array[int]([1, 1, 1])

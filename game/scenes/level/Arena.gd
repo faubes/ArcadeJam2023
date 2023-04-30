@@ -7,7 +7,7 @@ class_name Arena
 @onready var center : Vector2 = get_viewport_rect().size/2
 
 func _ready():
-	animation_player.play("level1")
+	pass
 
 func _on_spawn_PickUp():
 	print("spawn")

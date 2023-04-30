@@ -1,11 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://bko20r5naf5y8"]
+[gd_scene load_steps=4 format=3 uid="uid://bko20r5naf5y8"]
 
 [ext_resource type="PackedScene" uid="uid://dyu7s1jrvo5w7" path="res://scenes/pickup/PickUp.tscn" id="1_svqar"]
 [ext_resource type="Script" path="res://scenes/pickup/behaviours/PickUpAwardPointsBehaviour.gd" id="2_ykps1"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_kvb2o"]
+resource_local_to_scene = true
+radius = 128.0
+
 [node name="PickUpHaulPoints" instance=ExtResource("1_svqar")]
 pointValue = 10
 consumeBehaviour = NodePath("PickUpAwardPointsBehaviour")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_kvb2o")
 
 [node name="PickUpAwardPointsBehaviour" type="Node" parent="." index="2"]
 script = ExtResource("2_ykps1")
