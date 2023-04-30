@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dff2ac1k3sqxe"]
+
+[ext_resource type="PackedScene" uid="uid://bko20r5naf5y8" path="res://scenes/pickup/PickUpPointsHaul.tscn" id="1_l8frg"]
+
+[node name="PickUpHaulPointsSmall" instance=ExtResource("1_l8frg")]

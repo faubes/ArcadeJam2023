@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dl415u1p8p362"]
+
+[ext_resource type="PackedScene" uid="uid://bko20r5naf5y8" path="res://scenes/pickup/PickUpPointsHaul.tscn" id="1_tuenq"]
+
+[node name="PickUpPointHaulLarge" instance=ExtResource("1_tuenq")]
+mass = 3
+pointValue = 50
+size = 30
+mass = 3

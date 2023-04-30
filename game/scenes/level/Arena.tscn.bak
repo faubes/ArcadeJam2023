@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+[gd_scene load_steps=15 format=3 uid="uid://q5bjny8mw82f"]
+=======
 [gd_scene load_steps=13 format=3 uid="uid://q5bjny8mw82f"]
+>>>>>>> f9308c0a56f2ee824f1038feeea060b7522cae27
 
 [ext_resource type="Script" path="res://scenes/level/Arena.gd" id="1_4ycsb"]
 [ext_resource type="PackedScene" uid="uid://dte16d778t1xn" path="res://scenes/player/Player.tscn" id="1_wd7dh"]
@@ -6,6 +10,7 @@
 [ext_resource type="Script" path="res://scenes/level/PlayArea.gd" id="2_6dix0"]
 [ext_resource type="Script" path="res://scenes/gameplay/PickUpSpawner.gd" id="3_pejwu"]
 [ext_resource type="Texture2D" uid="uid://q83lmjb4jm0q" path="res://assets/letterbox_bg.svg" id="6_h741i"]
+[ext_resource type="PackedScene" uid="uid://b6vfrkaxqqn1t" path="res://scenes/level/game_ui.tscn" id="8_wl66v"]
 
 [sub_resource type="Animation" id="Animation_p6gea"]
 resource_name = "level1"
@@ -121,7 +126,6 @@ libraries = {
 }
 
 [node name="LeftWall" type="RigidBody2D" parent="."]
-collision_layer = 2
 lock_rotation = true
 freeze = true
 
@@ -129,7 +133,6 @@ freeze = true
 shape = SubResource("RectangleShape2D_ec6ix")
 
 [node name="RightWall" type="RigidBody2D" parent="."]
-collision_layer = 2
 lock_rotation = true
 freeze = true
 
@@ -137,7 +140,6 @@ freeze = true
 shape = SubResource("RectangleShape2D_f0fp4")
 
 [node name="TopWall" type="RigidBody2D" parent="."]
-collision_layer = 2
 lock_rotation = true
 freeze = true
 
@@ -145,7 +147,6 @@ freeze = true
 shape = SubResource("RectangleShape2D_e0817")
 
 [node name="BottomWall" type="RigidBody2D" parent="."]
-collision_layer = 2
 lock_rotation = true
 freeze = true
 
@@ -161,3 +162,5 @@ texture = ExtResource("6_h741i")
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("6_h741i")
+
+[node name="GameUI" parent="." instance=ExtResource("8_wl66v")]
