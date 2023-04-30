@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://q5bjny8mw82f"]
+[gd_scene load_steps=13 format=3 uid="uid://q5bjny8mw82f"]
 
 [ext_resource type="Script" path="res://scenes/level/Arena.gd" id="1_4ycsb"]
 [ext_resource type="PackedScene" uid="uid://dte16d778t1xn" path="res://scenes/player/Player.tscn" id="1_wd7dh"]
@@ -6,9 +6,6 @@
 [ext_resource type="Script" path="res://scenes/level/PlayArea.gd" id="2_6dix0"]
 [ext_resource type="Script" path="res://scenes/gameplay/PickUpSpawner.gd" id="3_pejwu"]
 [ext_resource type="Texture2D" uid="uid://q83lmjb4jm0q" path="res://assets/letterbox_bg.svg" id="6_h741i"]
-[ext_resource type="PackedScene" uid="uid://dl415u1p8p362" path="res://scenes/pickup/PickUpPointsHaulLarge.tscn" id="7_3siov"]
-[ext_resource type="PackedScene" uid="uid://dnsymhxjowowj" path="res://scenes/pickup/PickUpPointsHaulMedium.tscn" id="8_v0jt6"]
-[ext_resource type="PackedScene" uid="uid://dff2ac1k3sqxe" path="res://scenes/pickup/PickUpPointsHaulSmall.tscn" id="9_y0j3o"]
 
 [sub_resource type="Animation" id="Animation_p6gea"]
 resource_name = "level1"
@@ -124,21 +121,29 @@ libraries = {
 }
 
 [node name="LeftWall" type="RigidBody2D" parent="."]
+lock_rotation = true
+freeze = true
 
 [node name="LeftWallCollider" type="CollisionShape2D" parent="LeftWall"]
 shape = SubResource("RectangleShape2D_ec6ix")
 
 [node name="RightWall" type="RigidBody2D" parent="."]
+lock_rotation = true
+freeze = true
 
 [node name="RightWallCollider" type="CollisionShape2D" parent="RightWall"]
 shape = SubResource("RectangleShape2D_f0fp4")
 
 [node name="TopWall" type="RigidBody2D" parent="."]
+lock_rotation = true
+freeze = true
 
 [node name="TopWallCollider" type="CollisionShape2D" parent="TopWall"]
 shape = SubResource("RectangleShape2D_e0817")
 
 [node name="BottomWall" type="RigidBody2D" parent="."]
+lock_rotation = true
+freeze = true
 
 [node name="BottomWallCollider" type="CollisionShape2D" parent="BottomWall"]
 shape = SubResource("RectangleShape2D_h3ln6")
@@ -152,12 +157,3 @@ texture = ExtResource("6_h741i")
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("6_h741i")
-
-[node name="PickUpPointHaulLarge" parent="." instance=ExtResource("7_3siov")]
-position = Vector2(196, 313)
-
-[node name="PickUpPointHaulMedium" parent="." instance=ExtResource("8_v0jt6")]
-position = Vector2(539, 310)
-
-[node name="PickUpHaulPointsSmall" parent="." instance=ExtResource("9_y0j3o")]
-position = Vector2(874, 302)
