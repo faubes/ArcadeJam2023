@@ -24,20 +24,32 @@ var current_rotation_input : float = 0
 var target_angle : float
 var player_flip_sign = 1
 
+var debug : bool = true
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	claw.set_color(player_color)
 	claw.set_player(self)
 	#claw.global_position = self.global_position + min_range * Vector2.RIGHT
-	print("{player} start angle: {angle} end angle: {end_angle}" \
-		.format({"player" : player_id, "angle" : phase_angle, "end_angle" : phase_angle + PI/2}))
+	if debug:
+		print("{player} start angle: {angle} end angle: {end_angle}" \
+			.format({"player" : player_id, "angle" : phase_angle, "end_angle" : phase_angle + PI/2}))
 	target_angle = phase_angle + PI/4
 	rotation = target_angle
+
+func set_hand_state(new_state : hand_state):
+	if current_hand_state == new_state:
+		return
+	if debug:
+		print("{old} -> {new}".format({"old" : current_hand_state, "new" : new_state}))
+	current_hand_state = new_state
 
 func set_arm_state(new_state : arm_state):
 	if current_arm_state == new_state:
 		return
-	print("{old} -> {new}".format({"old" : current_arm_state, "new" : new_state}))
+	if debug:
+		print("{old} -> {new}".format({"old" : current_arm_state, "new" : new_state}))
 	current_arm_state = new_state
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -60,6 +72,8 @@ func _physics_process(delta):
 			if claw.global_position.distance_to(self.global_position) < min_range:
 				set_arm_state(arm_state.retracted)
 				claw.linear_velocity = Vector2.ZERO
+				if claw.is_holding_pickup():
+					claw.consume_pickup()
 			else:
 				claw.apply_force(-retract_speed * transform.basis_xform(Vector2.DOWN))
 
@@ -74,7 +88,7 @@ func _physics_process(delta):
 
 
 func _input(event):
-	if !GameCore.inGame:
+	if !GameCore.inGame and !debug:
 		return
 	
 	if event.device != player_id:
@@ -108,4 +122,5 @@ func _input(event):
 func recoil():
 	if current_arm_state == arm_state.extending or current_arm_state == arm_state.retracting:
 		claw.apply_impulse(-0.3 * retract_speed * transform.basis_xform(Vector2.DOWN))
+		set_hand_state(hand_state.open)
 		set_arm_state(arm_state.retracting)
