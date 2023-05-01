@@ -22,21 +22,25 @@ var consumeParticles : GPUParticles2D = null
 @onready var initialOffset : Vector2 = self.position - GameCore.get_center_point();
 
 var initialRadius = 0
+var toTarget
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	initShape()
 
 func _physics_process(_delta):
-	if (!grabbed):
+	if !grabbed:
 		currentRotation += rotationSpeed * _delta
 		while (currentRotation > PI * 2.0):
 			currentRotation -= PI * 2.0
-		
+
+
+func _integrate_forces(state):
+	if !grabbed:
 		var newOffset = initialOffset.rotated(currentRotation)
 		var targetPosition : Vector2 = GameCore.get_center_point() + newOffset
 		var toTarget = targetPosition - self.position
-		self.apply_central_force(toTarget)
+		state.linear_velocity = toTarget
 
 func initShape():
 	# Change the size of the collision shape according to the size setting.
