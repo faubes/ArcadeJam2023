@@ -16,6 +16,7 @@ var spawnedPickUps : Array[Node] = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Listen for node destructions
+	GameCore.onPickUpDestroyed.connect(onPickUpDestroyed)
 	
 	# Cache the play area
 	if (playAreaPath != null):
@@ -83,3 +84,6 @@ func chooseNextPickUp():
 		return pickUps[spawnIndex]
 	
 	return null
+
+func onPickUpDestroyed(pickUp):
+	spawnedPickUps.erase(pickUp)

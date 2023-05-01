@@ -16,6 +16,7 @@ var inGame : bool = false
 
 signal onPickUpConsumed(player, pickUp)
 signal onPickUpGrabbed(player, pickUp)
+signal onPickUpDestroyed(pickUp)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

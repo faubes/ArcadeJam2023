@@ -56,11 +56,11 @@ func grab(grabbingPlayer : Player):
 		(get_node(grabBehaviour) as PickUpBehaviour).perform(self, grabbingPlayer)
 	
 	# Notify the game operator
-	GameCore.onPickUpGrabbed.emit()
+	GameCore.onPickUpGrabbed.emit(self, grabbingPlayer)
 	
 	# Destroy if needed
 	if (destroyOnGrab):
-		queue_free()
+		selfDestruct()
 
 func release():
 	grabbed = false;
@@ -73,12 +73,16 @@ func consume(consumingPlayer : Player):
 		(get_node(consumeBehaviour) as PickUpBehaviour).perform(self, consumingPlayer)
 	
 	# Notify the game operator
-	GameCore.onPickUpConsumed.emit()
+	GameCore.onPickUpConsumed.emit(self, consumingPlayer)
 	
 	# Destroy if needed
 	if (destroyOnConsume):
-		queue_free()
+		selfDestruct()
 
 func setCollisionEnabled(enabled : bool):
 	if (collisionShape != null):
 		collisionShape.disabled = !enabled
+
+func selfDestruct():
+	GameCore.onPickUpDestroyed.emit(self)
+	queue_free()
