@@ -88,6 +88,7 @@ func _on_body_shape_entered(body_rid, body, _body_shape_index, _local_shape_inde
 		other_claw.recoil()
 		return
 
+#signal from open animation to know "closing" is finished
 func _on_open_start():
 	if is_closing:
 		#print("done closing")
@@ -98,4 +99,5 @@ func _physics_process(_delta):
 	if debug and player_owner.player_id == 0 and is_holding_pickup():
 		print(self.position)
 	for item in held_pickup:
-		item.global_position = self.global_position
+		if item: # this hit a error a few times; items being freed during loop?
+			item.global_position = self.global_position
