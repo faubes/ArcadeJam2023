@@ -17,7 +17,7 @@ var consumeParticles : GPUParticles2D = null
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var asprite : AnimatedSprite2D = $AnimatedSprite2D
 @onready var grabbed : bool = false
-@onready var rotationSpeed : float =  0 #randf_range(PI * 0.05, PI * 0.5)
+@onready var rotationSpeed : float =  randf_range(PI * 0.05, PI * 0.5)
 @onready var currentRotation : float = 0.0
 @onready var initialOffset : Vector2 = self.position - GameCore.get_center_point();
 
