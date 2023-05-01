@@ -73,7 +73,7 @@ func FindCurrentBestScore():
 	return bestscore
 
 func save_game():
-	var save_game_file = FileAccess.open("res://savegame.save", FileAccess.WRITE)
+	var save_game_file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
 	#Serialize the scores.
 	var json_string = JSON.stringify(bestScoreArray)
 	save_game_file.store_line(json_string)
@@ -85,12 +85,12 @@ func save_game():
 		#save_game.store_line(json_string)
 
 func load_game():
-	if not FileAccess.file_exists("res://savegame.save"):
+	if not FileAccess.file_exists("user://savegame.save"):
 		return # Error! We don't have a save to load.
 #
 #    # Load the file line by line and process that dictionary to restore
 #    # the object it represents.
-	var save_game_file = FileAccess.open("res://savegame.save", FileAccess.READ)
+	var save_game_file = FileAccess.open("user://savegame.save", FileAccess.READ)
 	var json_string = save_game_file.get_line()
 #
 	# Creates the helper class to interact with JSON
